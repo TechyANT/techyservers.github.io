@@ -39,10 +39,61 @@
 						<!-- Intro -->
 							<article id="Rates">
 								<h2 class="major">Server Rates</h2> 
-								<img src="images/Special_Explorer_Note_XP_Buff.webp"alt="Special_Explorer_Note_XP_Buff"align="right">
-								<p></p>
-								<img src="images/Mod_logo.webp"alt="ModLogo"align="right">
-<ul>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+</head>
+<body>
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Ascended')">ARK Ascended</button>
+  <button class="tablinks" onclick="openCity(event, 'Evolved')">ARK Evolved</button>
+  <button class="tablinks" onclick="openCity(event, 'Palworld')">Palworld</button>
+</div>
+
+<div id="Ascended" class="tabcontent">
+  <h3>ARK Ascended Rates</h3>
+  <p><ul>
   <li>5x Taming</li>
   <li>5x Harvesting</li>
   <li>10x Breeding</li>
@@ -61,7 +112,68 @@ Mods
   <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/super-cryo-storage" target="_blank">Super Cryo Storage (Dino's raise and imprint in fridges while offline) Resources produce as well.</a></li>
   <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/custom-dino-levels" target="_blank">Custom Dino Levels (Better dino levels and max lvl 200)</a></li>
 
-</ul>  
+</ul>  </p>
+</div>
+
+<div id="Evolved" class="tabcontent">
+  <h3>ARK Evolved Rates</h3>
+  <p><ul>
+  <li>5x Taming</li>
+  <li>5x Harvesting</li>
+  <li>20x Breeding</li>
+  <li>3x Drops and custom drops (Kibble,wyvern milk,nameless venom, armor etc)</li>
+  <li>1k-10k Item stack rate depending on resource</li>
+  <li>Max wild dino level is 200 (No dino level cap for server breeding)</li>
+  <li>Obelisk decay time = 30days</li>
+  <li>Structer decay time = 12d thatch, 24d wood, 24d adobe, 36d stone, 48d metal, 60d tek</li>
+Plugins:
+  <li><a href="https://gameservershub.com/forums/resources/all-engrams.14/" target="_blank">All Engrams</a></li>
+  <li><a href="https://gameservershub.com/forums/resources/dino-utilities-free.270/" target="_blank">Dino Utilities</a></li>
+  <li><a href="https://gameservershub.com/forums/resources/enhanced-hlna.268/" target="_blank">Enhanced HLNA</a></li>
+  <li><a href="https://gameservershub.com/forums/resources/item-collector-free.565/" target="_blank">Item Collector</a></li>
+  <li><a href="https://gameservershub.com/forums/resources/structure-utilities-pro.630/" target="_blank">Structure Utilities</a></li>
+ </li>
+
+</ul>  </p> 
+</div>
+
+<div id="Palworld" class="tabcontent">
+  <h3>Palworld Rates</h3>
+  <p>
+  <ul>
+  <li>5x Catch rate</li>
+  <li>5x XP</li>
+  <li>Difficulty=None (No drops lost on death)</li>
+  <li>PalStomachDecreaceRate=0.8</li>
+  <li>PalAutoHPRegeneRate=2.0</li>
+  <li>PalStaminaDecreaceRate=0.5</li>
+  <li>WorkSpeedRate=5.0</li>
+  <li>AutoResetGuildTimeNoOnlinePlayers=0 (No server wipes for now. Join discord for any news on wiping of servers)</li>
+  </ul>
+  </p>
+</div>
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+   
+</body>
+</html> 
+
+
+	
 							</article>
 
 						<!-- Discord -->
