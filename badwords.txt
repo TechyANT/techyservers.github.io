@@ -1,10 +1,7 @@
 human
 humano
+humano1
 human1
-123
-"123"
- 123 
- 123
 chinc
 chincc
 chinnc
