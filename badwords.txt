@@ -1,5 +1,10 @@
 human
+human1
 123
+1234
+1233
+12344
+12345
 chinc
 chincc
 chinnc
@@ -1257,6 +1262,7 @@ nniigggaa
 nniigggga
 nniiggggaa
 nigger
+niggerz
 niggerr
 niggeer
 niggeerr
