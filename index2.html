@@ -33,13 +33,13 @@
             z-index: 1; /* Place main content above video */
         }
 
-        /* Styling for article sections */
+        /* Styling for article sections - now with rgba background for transparency */
         article {
-            background-color: #2d3748; /* Slightly lighter dark background for content blocks */
+            background-color: rgba(45, 55, 72, 0.9); /* Slightly lighter dark background with 90% opacity */
             border-radius: 0.75rem; /* Rounded corners */
             padding: 2rem;
             margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow for depth */
         }
 
         /* Override default table styles for responsiveness and better aesthetics */
@@ -58,13 +58,13 @@
         }
 
         th {
-            background-color: #4a5568; /* Header background */
+            background-color: rgba(74, 85, 104, 0.95); /* Header background with slight transparency */
             font-weight: bold;
             color: #ffffff; /* White text for headers */
         }
 
         tr:hover {
-            background-color: #4a5568; /* Highlight rows on hover */
+            background-color: rgba(74, 85, 104, 0.7); /* Highlight rows on hover with more transparency */
         }
 
         /* Ensure images are responsive within their containers */
@@ -100,7 +100,7 @@
         }
 
         .dino-commands-scroll::-webkit-scrollbar-track {
-            background: #2d3748; /* Dark background for the scrollbar track */
+            background: rgba(45, 55, 72, 0.7); /* Transparent dark background for the scrollbar track */
             border-radius: 10px;
         }
 
@@ -203,6 +203,34 @@
             background-color: #2563eb; /* Blue-700 */
             transform: translateY(-2px);
         }
+
+        /* Transparent background for header and footer */
+        #header, #footer {
+            background-color: rgba(26, 32, 44, 0.9); /* Dark gray with 90% opacity */
+        }
+
+        /* Transparent background for tab content and table body */
+        .tabcontent {
+            background-color: rgba(45, 55, 72, 0.9); /* Slightly lighter dark background with 90% opacity */
+        }
+        .tabcontent h3, .tabcontent ul, .tabcontent a {
+            color: #e2e8f0; /* Ensure text remains light */
+        }
+        .tabcontent .font-bold {
+            color: #ffffff; /* Ensure bold text is white */
+        }
+
+        #dinoCommandsTable tbody,
+        #commands .overflow-x-auto table tbody {
+            background-color: rgba(45, 55, 72, 0.85); /* Dino commands table body with 85% opacity */
+        }
+
+        /* Adjust input field background for consistency */
+        #dinoSearchInput,
+        #palworldInput {
+            background-color: rgba(74, 85, 104, 0.9); /* Slightly more transparent */
+        }
+
     </style>
 </head>
 <body class="is-preload bg-gray-900 text-gray-200">
@@ -211,7 +239,7 @@
     <div id="video-background">
         <iframe
             id="background-video-player"
-            src="https://www.youtube.com/embed/OlOhxvE2fFw?controls=0&autoplay=1&mute=0&enablejsapi=1&iv_load_policy=3"
+            src="https://www.youtube.com/embed/OlOhxvE2fFw?controls=0&autoplay=1&mute=1&enablejsapi=1&iv_load_policy=3"
             frameborder="0"
             allow="autoplay; encrypted-media"
             allowfullscreen
@@ -1582,7 +1610,7 @@
     <!-- Video Controls -->
     <div id="video-controls">
         <button id="playPauseBtn">Pause</button>
-        <button id="muteUnmuteBtn">Mute</button>
+        <button id="muteUnmuteBtn">Unmute</button>
     </div>
 
     <!-- Custom message box for copy operations -->
@@ -1592,10 +1620,10 @@
     <script>
         // YouTube Player API variable
         var player;
-        // isPlaying starts true, as the video is set to autoplay.
-        // isMuted starts false, as the video is set to start unmuted.
-        let isPlaying = true;
-        let isMuted = false;
+        // isPlaying starts false initially, as video will be delayed.
+        // isMuted starts true, as the video is now set to start muted.
+        let isPlaying = false; // Changed to false, will be set to true after delay
+        let isMuted = true;
 
         /**
          * Callback function called when the YouTube IFrame API is ready.
@@ -1612,17 +1640,23 @@
 
         /**
          * Callback function called when the YouTube player is ready.
-         * Sets initial state (unmuted, plays video) and updates control buttons.
+         * Sets initial state (muted, plays video after delay) and updates control buttons.
          * @param {Event} event - The player ready event.
          */
         function onPlayerReady(event) {
-            // Video starts unmuted, so no need to call event.target.mute()
-            event.target.playVideo(); // Start playing
-            event.target.setVolume(25); // Set to a light volume, e.g., 25%
+            event.target.mute(); // Mute the video on load
+            event.target.setVolume(25); // Set a default volume if unmuted later
+
+            // Delay playback by 5 seconds
+            setTimeout(() => {
+                event.target.playVideo(); // Start playing after 5 seconds
+                isPlaying = true; // Update state after starting playback
+                document.getElementById('playPauseBtn').textContent = 'Pause'; // Update button
+            }, 5000); // 5000 milliseconds = 5 seconds
 
             // Update button text based on initial state
-            document.getElementById('playPauseBtn').textContent = 'Pause';
-            document.getElementById('muteUnmuteBtn').textContent = 'Mute'; // Because it starts unmuted
+            document.getElementById('playPauseBtn').textContent = 'Play'; // Initially shows 'Play' as it's delayed
+            document.getElementById('muteUnmuteBtn').textContent = 'Unmute'; // Because it starts muted
         }
 
         // Removed onPlayerStateChange for looping, as requested to play only once.
