@@ -330,9 +330,14 @@
                 <h2 class="text-4xl font-bold text-white mb-6 border-b-2 border-blue-500 pb-2">Shop Commands</h2>
 
                 <h3 class="text-2xl font-bold text-white mt-6 mb-3">Dino Commands</h3>
+                <!-- Search box for Dino Commands -->
+                <div class="mb-4">
+                    <input type="text" id="dinoSearchInput" placeholder="Search for a dino or command..." class="bg-gray-700 border border-gray-600 rounded-lg py-2 px-4 text-gray-200 w-full max-w-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+
                 <!-- Scrolling window for Dino Commands -->
                 <div class="overflow-y-auto h-96 rounded-lg shadow-lg border border-gray-600 dino-commands-scroll">
-                    <table class="min-w-full">
+                    <table class="min-w-full" id="dinoCommandsTable">
                         <thead>
                             <tr>
                                 <th class="sticky top-0 bg-gray-600 py-3 px-4 uppercase font-semibold text-sm text-gray-100 z-10 rounded-tl-lg">Dinos</th>
@@ -1706,6 +1711,38 @@
             }
         }
 
+        /**
+         * Filters the dino commands table based on the search input.
+         */
+        function filterDinoCommands() {
+            const input = document.getElementById('dinoSearchInput');
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById('dinoCommandsTable');
+            const tr = table.getElementsByTagName('tr');
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (let i = 1; i < tr.length; i++) { // Start from 1 to skip the header row
+                let rowMatches = false;
+                // Loop through all cells in the current row
+                const td = tr[i].getElementsByTagName('td');
+                for (let j = 0; j < td.length; j++) {
+                    const cell = td[j];
+                    if (cell) {
+                        if (cell.textContent.toLowerCase().indexOf(filter) > -1) {
+                            rowMatches = true;
+                            break; // No need to check other cells in this row
+                        }
+                    }
+                }
+                if (rowMatches) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+
+
         // Event listener for all interactive elements once the DOM is fully loaded
         document.addEventListener('DOMContentLoaded', () => {
             // Palworld copy button functionality
@@ -1741,6 +1778,9 @@
                     isMuted = !isMuted;
                 }
             });
+
+            // Add event listener for dino search input
+            document.getElementById('dinoSearchInput').addEventListener('input', filterDinoCommands);
 
             // Initialize the first tab (ARK Evolved) to be open by default
             // This selects the first button with class 'tablinks' and clicks it.
