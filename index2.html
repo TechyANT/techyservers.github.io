@@ -178,12 +178,11 @@
             pointer-events: none; /* Prevents clicks on the video from affecting the page */
         }
 
-        /* Video controls styling */
+        /* Video controls styling - positioned bottom right */
         #video-controls {
             position: fixed;
             bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            right: 20px; /* Moved to bottom right */
             z-index: 40; /* Above main content, below header */
             display: flex;
             gap: 1rem; /* Space between buttons */
@@ -212,7 +211,7 @@
     <div id="video-background">
         <iframe
             id="background-video-player"
-            src="https://www.youtube.com/embed/OlOhxvE2fFw?controls=0&autoplay=1&mute=1&loop=1&playlist=OlOhxvE2fFw&enablejsapi=1&iv_load_policy=3"
+            src="https://www.youtube.com/embed/OlOhxvE2fFw?controls=0&autoplay=1&mute=0&enablejsapi=1&iv_load_policy=3"
             frameborder="0"
             allow="autoplay; encrypted-media"
             allowfullscreen
@@ -223,7 +222,7 @@
     <div id="wrapper" class="min-h-screen flex flex-col">
 
         <!-- Header -->
-        <header id="header" class="bg-gray-800 p-6 flex flex-col md:flex-row items-center justify-between rounded-b-xl shadow-lg sticky top-0 w-full z-50">
+        <header id="header" class="bg-gray-800 py-4 px-6 flex flex-col md:flex-row items-center justify-between rounded-b-xl shadow-lg sticky top-0 w-full z-50">
             <div class="logo mb-4 md:mb-0 md:mr-6">
                 <!-- Reverted to original image logo -->
                 <img src="images/Alpha_Ascension_Implant.webp" alt="Alpha_Ascension_Implant" class="w-24 h-24 object-cover rounded-full border-4 border-blue-500 shadow-md">
@@ -1578,7 +1577,7 @@
     <!-- Video Controls -->
     <div id="video-controls">
         <button id="playPauseBtn">Pause</button>
-        <button id="muteUnmuteBtn">Unmute</button>
+        <button id="muteUnmuteBtn">Mute</button>
     </div>
 
     <!-- Custom message box for copy operations -->
@@ -1588,8 +1587,10 @@
     <script>
         // YouTube Player API variable
         var player;
-        let isPlaying = true; // Video starts playing
-        let isMuted = true;   // Video starts muted
+        // isPlaying starts true, as the video is set to autoplay.
+        // isMuted starts false, as the video is set to start unmuted.
+        let isPlaying = true;
+        let isMuted = false;
 
         /**
          * Callback function called when the YouTube IFrame API is ready.
@@ -1599,34 +1600,27 @@
             player = new YT.Player('background-video-player', {
                 events: {
                     'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
+                    // No onStateChange for looping, as the user requested it to play only once.
                 }
             });
         }
 
         /**
          * Callback function called when the YouTube player is ready.
-         * Sets initial state (muted, plays video) and updates control buttons.
+         * Sets initial state (unmuted, plays video) and updates control buttons.
          * @param {Event} event - The player ready event.
          */
         function onPlayerReady(event) {
-            event.target.mute(); // Ensure video starts muted
+            // Video starts unmuted, so no need to call event.target.mute()
             event.target.playVideo(); // Start playing
+            event.target.setVolume(25); // Set to a light volume, e.g., 25%
+
             // Update button text based on initial state
             document.getElementById('playPauseBtn').textContent = 'Pause';
-            document.getElementById('muteUnmuteBtn').textContent = 'Unmute'; // Because it starts muted
+            document.getElementById('muteUnmuteBtn').textContent = 'Mute'; // Because it starts unmuted
         }
 
-        /**
-         * Callback function called when the player's state changes.
-         * Handles video looping.
-         * @param {Event} event - The player state change event.
-         */
-        function onPlayerStateChange(event) {
-            if (event.data === YT.PlayerState.ENDED) {
-                player.playVideo(); // Loop video when it ends
-            }
-        }
+        // Removed onPlayerStateChange for looping, as requested to play only once.
 
         // Load the YouTube IFrame Player API asynchronously.
         var tag = document.createElement('script');
@@ -1738,7 +1732,7 @@
                 if (player) { // Ensure player is initialized
                     if (isMuted) {
                         player.unMute();
-                        player.setVolume(15); // Set to a light volume, e.g., 15%
+                        player.setVolume(25); // Set to a light volume, e.g., 25%
                         document.getElementById('muteUnmuteBtn').textContent = 'Mute';
                     } else {
                         player.mute();
