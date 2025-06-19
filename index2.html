@@ -1,362 +1,1563 @@
-<!DOCTYPE HTML>
-<!--
-	Dimension by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Dimension by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechyServers</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the tab content to ensure it's hidden by default */
+        .tabcontent {
+            display: none;
+        }
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+        /* Specific styling for the body to apply 'Inter' font and a dark background */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Dark background */
+            color: #e2e8f0; /* Light text color for contrast */
+            line-height: 1.6;
+        }
 
-				<!-- Header -->
-					<header id="header">
-						<div class="logo">
-							<span class="icon fa-gem"></span>
-						</div>
-						<div class="content">
-							<div class="inner">
-								<h1>Dimension</h1>
-								<p>A fully responsive site template designed by <a href="https://html5up.net">HTML5 UP</a> and released<br />
-								for free under the <a href="https://html5up.net/license">Creative Commons</a> license.</p>
-							</div>
-						</div>
-						<nav>
-							<ul>
-								<li><a href="#intro">Intro</a></li>
-								<li><a href="#work">Work</a></li>
-								<li><a href="#about">About</a></li>
-								<li><a href="#contact">Contact</a></li>
-								<li><a href="#elements">Elements</a></li>
-							</ul>
-						</nav>
-					</header>
+        /* Adjustments for the main content area for better readability */
+        #main {
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-				<!-- Main -->
-					<div id="main">
+        /* Styling for article sections */
+        article {
+            background-color: #2d3748; /* Slightly lighter dark background for content blocks */
+            border-radius: 0.75rem; /* Rounded corners */
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-						<!-- Intro -->
-							<article id="intro">
-								<h2 class="major">Intro</h2>
-								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
-								<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. By the way, check out my <a href="#work">awesome work</a>.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
-							</article>
+        /* Override default table styles for responsiveness and better aesthetics */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
 
-						<!-- Work -->
-							<article id="work">
-								<h2 class="major">Work</h2>
-								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
-								<p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
-								<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat tempus.</p>
-							</article>
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #4a5568; /* Darker border for contrast */
+            color: #e2e8f0; /* Light text color */
+        }
 
-						<!-- About -->
-							<article id="about">
-								<h2 class="major">About</h2>
-								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-								<p>Lorem ipsum dolor sit amet, consectetur et adipiscing elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices. Aliquam libero et malesuada fames ac ante ipsum primis in faucibus. Cras viverra ligula sit amet ex mollis mattis lorem ipsum dolor sit amet.</p>
-							</article>
+        th {
+            background-color: #4a5568; /* Header background */
+            font-weight: bold;
+            color: #ffffff; /* White text for headers */
+        }
 
-						<!-- Contact -->
-							<article id="contact">
-								<h2 class="major">Contact</h2>
-								<form method="post" action="#">
-									<div class="fields">
-										<div class="field half">
-											<label for="name">Name</label>
-											<input type="text" name="name" id="name" />
-										</div>
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" />
-										</div>
-										<div class="field">
-											<label for="message">Message</label>
-											<textarea name="message" id="message" rows="4"></textarea>
-										</div>
-									</div>
-									<ul class="actions">
-										<li><input type="submit" value="Send Message" class="primary" /></li>
-										<li><input type="reset" value="Reset" /></li>
-									</ul>
-								</form>
-								<ul class="icons">
-									<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</article>
+        tr:hover {
+            background-color: #4a5568; /* Highlight rows on hover */
+        }
 
-						<!-- Elements -->
-							<article id="elements">
-								<h2 class="major">Elements</h2>
+        /* Ensure images are responsive within their containers */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem; /* Rounded corners for images */
+        }
 
-								<section>
-									<h3 class="major">Text</h3>
-									<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-									This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-									<hr />
-									<h2>Heading Level 2</h2>
-									<h3>Heading Level 3</h3>
-									<h4>Heading Level 4</h4>
-									<h5>Heading Level 5</h5>
-									<h6>Heading Level 6</h6>
-									<hr />
-									<h4>Blockquote</h4>
-									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-									<h4>Preformatted</h4>
-									<pre><code>i = 0;
+        /* Styling for the copy message box */
+        .copy-message {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #48bb78; /* Green for success */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 1000;
+        }
+        .copy-message.show {
+            opacity: 1;
+        }
 
-while (!deck.isInOrder()) {
-    print 'Iteration ' + i;
-    deck.shuffle();
-    i++;
-}
+        /* Custom scrollbar styling for the dino commands table */
+        .dino-commands-scroll::-webkit-scrollbar {
+            width: 8px;
+            height: 8px; /* For horizontal scrollbar */
+        }
 
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-								</section>
+        .dino-commands-scroll::-webkit-scrollbar-track {
+            background: #2d3748; /* Dark background for the scrollbar track */
+            border-radius: 10px;
+        }
 
-								<section>
-									<h3 class="major">Lists</h3>
+        .dino-commands-scroll::-webkit-scrollbar-thumb {
+            background: #3b82f6; /* Blue scrollbar thumb */
+            border-radius: 10px;
+        }
 
-									<h4>Unordered</h4>
-									<ul>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Sagittis adipiscing.</li>
-										<li>Felis enim feugiat.</li>
-									</ul>
+        .dino-commands-scroll::-webkit-scrollbar-thumb:hover {
+            background: #2563eb; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body class="is-preload bg-gray-900 text-gray-200">
 
-									<h4>Alternate</h4>
-									<ul class="alt">
-										<li>Dolor pulvinar etiam.</li>
-										<li>Sagittis adipiscing.</li>
-										<li>Felis enim feugiat.</li>
-									</ul>
+    <!-- Wrapper -->
+    <div id="wrapper" class="min-h-screen flex flex-col">
 
-									<h4>Ordered</h4>
-									<ol>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Etiam vel felis viverra.</li>
-										<li>Felis enim feugiat.</li>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Etiam vel felis lorem.</li>
-										<li>Felis enim et feugiat.</li>
-									</ol>
-									<h4>Icons</h4>
-									<ul class="icons">
-										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
-									</ul>
+        <!-- Header -->
+        <header id="header" class="bg-gray-800 p-6 flex flex-col md:flex-row items-center justify-between rounded-b-xl shadow-lg">
+            <div class="logo mb-4 md:mb-0 md:mr-6">
+                <img src="images/Alpha_Ascension_Implant.webp" alt="Alpha_Ascension_Implant" class="w-24 h-24 object-cover rounded-full border-4 border-blue-500 shadow-md">
+            </div>
+            <div class="content text-center md:text-left flex-grow">
+                <div class="inner">
+                    <h1 class="text-5xl font-extrabold text-white mb-2 tracking-wide">TechyServers</h1>
+                    <p class="text-xl text-gray-400">Better Rates - Fiber Network - Peaceful Fun!</p>
+                </div>
+            </div>
+            <nav class="mt-6 md:mt-0">
+                <ul class="flex flex-wrap justify-center md:justify-end space-x-4">
+                    <li><a href="#Rates" class="text-lg text-blue-300 hover:text-blue-100 transition-colors duration-300 px-4 py-2 rounded-lg hover:bg-blue-700">Rates</a></li>
+                    <li><a href="https://discord.gg/mE7f3K7CTm" target="_blank" class="text-lg text-blue-300 hover:text-blue-100 transition-colors duration-300 px-4 py-2 rounded-lg hover:bg-blue-700">Discord</a></li>
+                    <li><a href="#commands" class="text-lg text-blue-300 hover:text-blue-100 transition-colors duration-300 px-4 py-2 rounded-lg hover:bg-blue-700">Commands</a></li>
+                    <li><a href="https://www.techyservers.com/shop" target="_blank" class="text-lg text-blue-300 hover:text-blue-100 transition-colors duration-300 px-4 py-2 rounded-lg hover:bg-blue-700">Shop</a></li>
+                    <li><a href="#ServerList" class="text-lg text-blue-300 hover:text-blue-100 transition-colors duration-300 px-4 py-2 rounded-lg hover:bg-blue-700">Server List</a></li>
+                    <li><a href="#Contact" class="text-lg text-blue-300 hover:text-blue-100 transition-colors duration-300 px-4 py-2 rounded-lg hover:bg-blue-700">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
 
-									<h4>Actions</h4>
-									<ul class="actions">
-										<li><a href="#" class="button primary">Default</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-									<ul class="actions stacked">
-										<li><a href="#" class="button primary">Default</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-								</section>
+        <!-- Main Content -->
+        <div id="main" class="flex-grow">
 
-								<section>
-									<h3 class="major">Table</h3>
-									<h4>Default</h4>
-									<div class="table-wrapper">
-										<table>
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item One</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Two</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Three</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Four</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Five</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
+            <!-- Server Rates Section -->
+            <article id="Rates" class="mb-8">
+                <h2 class="text-4xl font-bold text-white mb-6 border-b-2 border-blue-500 pb-2">Server Rates</h2>
 
-									<h4>Alternate</h4>
-									<div class="table-wrapper">
-										<table class="alt">
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item One</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Two</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Three</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Four</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Five</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
-								</section>
+                <!-- Tab Buttons -->
+                <div class="tab flex border-b border-gray-700">
+                    <button class="tablinks bg-gray-700 text-gray-200 px-6 py-3 text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none" onclick="openGameTab(event, 'Ascended')">ARK Ascended</button>
+                    <button class="tablinks bg-gray-700 text-gray-200 px-6 py-3 text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none" onclick="openGameTab(event, 'Evolved')">ARK Evolved</button>
+                    <button class="tablinks bg-gray-700 text-gray-200 px-6 py-3 text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none" onclick="openGameTab(event, 'Palworld')">Palworld</button>
+                </div>
 
-								<section>
-									<h3 class="major">Buttons</h3>
-									<ul class="actions">
-										<li><a href="#" class="button primary">Primary</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-									<ul class="actions">
-										<li><a href="#" class="button">Default</a></li>
-										<li><a href="#" class="button small">Small</a></li>
-									</ul>
-									<ul class="actions">
-										<li><a href="#" class="button primary icon solid fa-download">Icon</a></li>
-										<li><a href="#" class="button icon solid fa-download">Icon</a></li>
-									</ul>
-									<ul class="actions">
-										<li><span class="button primary disabled">Disabled</span></li>
-										<li><span class="button disabled">Disabled</span></li>
-									</ul>
-								</section>
+                <!-- Tab Content: ARK Ascended -->
+                <div id="Ascended" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
+                    <h3 class="text-3xl font-semibold text-white mb-4">ARK Ascended Rates</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li><span class="font-bold">5x</span> Taming</li>
+                        <li><span class="font-bold">5x</span> Harvesting</li>
+                        <li><span class="font-bold">10x</span> Breeding</li>
+                        <li><span class="font-bold">10x</span> Egg Hatch Speed <a href="https://arkdino.com/Breeding/" target="_blank" class="text-blue-400 hover:underline"> (calculator)</a></li>
+                        <li><span class="font-bold">2.0</span> Decay time = 8 days thatch, 16d wood, 24d stone, 32d metal and 40d tek</li>
+                        <li><span class="font-bold">3.0</span> Decay Dino time = 30 days</li>
+                        <li><span class="font-bold">24/7</span> server uptime</li>
+                    </ul>
+                    <h4 class="text-2xl font-bold text-white mt-6 mb-3">Mods</h4>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/automated-ark" target="_blank" class="text-blue-400 hover:underline">Automated ARK</a></li>
+                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/awesomespyglass" target="_blank" class="text-blue-400 hover:underline">AwesomeSpyGlass</a></li>
+                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/ez-engram-unlocker" target="_blank" class="text-blue-400 hover:underline">EZ Engram Unlocker</a></li>
+                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/death-inventory-keeper" target="_blank" class="text-blue-400 hover:underline">Death Inventory Keeper (Does NOT keep artifacts or fertilized eggs)</a></li>
+                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/resource-gatherers" target="_blank" class="text-blue-400 hover:underline">Resource Gatherers</a></li>
+                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/tranqz" target="_blank" class="text-blue-400 hover:underline">Tranqz+</a></li>
+                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/awesometeleporters" target="_blank" class="text-blue-400 hover:underline">Awesome Teleporters</a></li>
+                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/super-cryo-storage" target="_blank" class="text-blue-400 hover:underline">Super Cryo Storage (Dino's raise and imprint in fridges while offline) Resources produce as well.</a></li>
+                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/custom-dino-levels" target="_blank" class="text-blue-400 hover:underline">Custom Dino Levels (Better dino levels and max lvl 200)</a></li>
+                    </ul>
+                </div>
 
-								<section>
-									<h3 class="major">Form</h3>
-									<form method="post" action="#">
-										<div class="fields">
-											<div class="field half">
-												<label for="demo-name">Name</label>
-												<input type="text" name="demo-name" id="demo-name" value="" placeholder="Jane Doe" />
-											</div>
-											<div class="field half">
-												<label for="demo-email">Email</label>
-												<input type="email" name="demo-email" id="demo-email" value="" placeholder="jane@untitled.tld" />
-											</div>
-											<div class="field">
-												<label for="demo-category">Category</label>
-												<select name="demo-category" id="demo-category">
-													<option value="">-</option>
-													<option value="1">Manufacturing</option>
-													<option value="1">Shipping</option>
-													<option value="1">Administration</option>
-													<option value="1">Human Resources</option>
-												</select>
-											</div>
-											<div class="field half">
-												<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-												<label for="demo-priority-low">Low</label>
-											</div>
-											<div class="field half">
-												<input type="radio" id="demo-priority-high" name="demo-priority">
-												<label for="demo-priority-high">High</label>
-											</div>
-											<div class="field half">
-												<input type="checkbox" id="demo-copy" name="demo-copy">
-												<label for="demo-copy">Email me a copy</label>
-											</div>
-											<div class="field half">
-												<input type="checkbox" id="demo-human" name="demo-human" checked>
-												<label for="demo-human">Not a robot</label>
-											</div>
-											<div class="field">
-												<label for="demo-message">Message</label>
-												<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-											</div>
-										</div>
-										<ul class="actions">
-											<li><input type="submit" value="Send Message" class="primary" /></li>
-											<li><input type="reset" value="Reset" /></li>
-										</ul>
-									</form>
-								</section>
+                <!-- Tab Content: ARK Evolved -->
+                <div id="Evolved" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
+                    <h3 class="text-3xl font-semibold text-white mb-4">ARK Evolved Rates</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li><span class="font-bold">5x</span> Taming</li>
+                        <li><span class="font-bold">3x</span> Harvesting</li>
+                        <li><span class="font-bold">20x</span> Breeding</li>
+                        <li><span class="font-bold">3x</span> Drops and custom drops (Kibble,wyvern milk,nameless venom, armor etc)</li>
+                        <li><span class="font-bold">1k-10k</span> Item stack rate depending on resource</li>
+                        <li>Max wild dino level is <span class="font-bold">200</span> (No dino level cap for server breeding)</li>
+                        <li>Obelisk decay time = <span class="font-bold">30 days</span></li>
+                        <li>Structer decay time = <span class="font-bold">12d</span> thatch, <span class="font-bold">24d</span> wood, <span class="font-bold">24d</span> adobe, <span class="font-bold">36d</span> stone, <span class="font-bold">48d</span> metal, <span class="font-bold">60d</span> tek</li>
+                    </ul>
+                    <h4 class="text-2xl font-bold text-white mt-6 mb-3">Plugins:</h4>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li><a href="https://gameservershub.com/forums/resources/all-engrams.14/" target="_blank" class="text-blue-400 hover:underline">All Engrams</a></li>
+                        <li><a href="https://gameservershub.com/forums/resources/dino-utilities-free.270/" target="_blank" class="text-blue-400 hover:underline">Dino Utilities</a></li>
+                        <li><a href="https://gameservershub.com/forums/resources/enhanced-hlna.268/" target="_blank" class="text-blue-400 hover:underline">Enhanced HLNA</a></li>
+                        <li><a href="https://gameservershub.com/forums/resources/item-collector-free.565/" target="_blank" class="text-blue-400 hover:underline">Item Collector</a></li>
+                        <li><a href="https://gameservershub.com/forums/resources/structure-utilities-pro.630/" target="_blank" class="text-blue-400 hover:underline">Structure Utilities</a></li>
+                    </ul>
+                </div>
 
-							</article>
+                <!-- Tab Content: Palworld -->
+                <div id="Palworld" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
+                    <h3 class="text-3xl font-semibold text-white mb-4">Palworld Rates</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li><span class="font-bold">5x</span> Catch rate</li>
+                        <li><span class="font-bold">5x</span> XP</li>
+                        <li>Difficulty=<span class="font-bold">None</span> (No drops lost on death)</li>
+                        <li>PalStomachDecreaceRate=<span class="font-bold">0.8</span></li>
+                        <li>PalAutoHPRegeneRate=<span class="font-bold">2.0</span></li>
+                        <li>PalStaminaDecreaceRate=<span class="font-bold">0.5</span></li>
+                        <li>WorkSpeedRate=<span class="font-bold">5.0</span></li>
+                        <li>AutoResetGuildTimeNoOnlinePlayers=<span class="font-bold">0</span> (No server wipes for now. Join discord for any news on wiping of servers)</li>
+                    </ul>
+                </div>
+            </article>
 
-					</div>
+            <!-- Shop Commands Section -->
+            <article id="commands" class="mb-8">
+                <h2 class="text-4xl font-bold text-white mb-6 border-b-2 border-blue-500 pb-2">Shop Commands</h2>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-					</footer>
+                <h3 class="text-2xl font-bold text-white mt-6 mb-3">Dino Commands</h3>
+                <!-- Scrolling window for Dino Commands -->
+                <div class="overflow-y-auto h-96 rounded-lg shadow-lg border border-gray-600 dino-commands-scroll">
+                    <table class="min-w-full">
+                        <thead>
+                            <tr>
+                                <th class="sticky top-0 bg-gray-600 py-3 px-4 uppercase font-semibold text-sm text-gray-100 z-10 rounded-tl-lg">Dinos</th>
+                                <th class="sticky top-0 bg-gray-600 py-3 px-4 uppercase font-semibold text-sm text-gray-100 z-10">Points</th>
+                                <th class="sticky top-0 bg-gray-600 py-3 px-4 uppercase font-semibold text-sm text-gray-100 z-10">Tier Level</th>
+                                <th class="sticky top-0 bg-gray-600 py-3 px-4 uppercase font-semibold text-sm text-gray-100 z-10 rounded-tr-lg">Command</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-gray-700 divide-y divide-gray-600">
+                            <!-- Dino entries here, example: -->
+                            <tr>
+                                <td class="py-3 px-4">Argentavis</td>
+                                <td class="py-3 px-4">500</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy argent</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Tropical Crystal Wyvern</td>
+                                <td class="py-3 px-4">2,000</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy crystalt</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Blood Crystal Wyvern</td>
+                                <td class="py-3 px-4">2,000</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy crystalb</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ember Crystal Wyvern</td>
+                                <td class="py-3 px-4">2,000</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy crystale</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Aberrant Dodo</td>
+                                <td class="py-3 px-4">100</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy dodo</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Desmodus</td>
+                                <td class="py-3 px-4">1,500</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy desmo</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Dimorphodon</td>
+                                <td class="py-3 px-4">500</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy dimo</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ab-Dimorpho</td>
+                                <td class="py-3 px-4">500</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abdimo</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Featherlight</td>
+                                <td class="py-3 px-4">750</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy feather</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Glowtail</td>
+                                <td class="py-3 px-4">750</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy glowt</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Bulbdog</td>
+                                <td class="py-3 px-4">750</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy bulb</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Fjordhawk</td>
+                                <td class="py-3 px-4">850</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy fjord</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Gasbags</td>
+                                <td class="py-3 px-4">950</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy gasb</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">R-Gasbags</td>
+                                <td class="py-3 px-4">950</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rgasb</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Griffin</td>
+                                <td class="py-3 px-4">1,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy griffin</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Lymantria</td>
+                                <td class="py-3 px-4">700</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy lyman</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Pelagornis</td>
+                                <td class="py-3 px-4">650</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy pela</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Phoenix</td>
+                                <td class="py-3 px-4">5,500</td>
+                                <td class="py-3 px-4">Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy phoenix</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Pteranodon</td>
+                                <td class="py-3 px-4">500</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy pt</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Quetzal</td>
+                                <td class="py-3 px-4">2,500</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy quetz</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">R-Quetzal</td>
+                                <td class="py-3 px-4">2,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rquetz</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Tek Quetzal</td>
+                                <td class="py-3 px-4">2,500</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy tekquetz</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Rhyniognatha</td>
+                                <td class="py-3 px-4">5,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rhynio</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Sinomacrops</td>
+                                <td class="py-3 px-4">750</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy sino</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Snow Owl</td>
+                                <td class="py-3 px-4">800</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy snow</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">R-Snow Owl</td>
+                                <td class="py-3 px-4">800</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rsnow</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Tapejara</td>
+                                <td class="py-3 px-4">600</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy tape</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Tropeognathus</td>
+                                <td class="py-3 px-4">900</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy trope</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Voidwyrm</td>
+                                <td class="py-3 px-4">7000</td>
+                                <td class="py-3 px-4">Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy voidw</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Vulture</td>
+                                <td class="py-3 px-4">600</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy vult</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Lightning Wyvern</td>
+                                <td class="py-3 px-4">2,500</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy lightw</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Fire Wyvern</td>
+                                <td class="py-3 px-4">2,500</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy firew</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Poison Wyvern</td>
+                                <td class="py-3 px-4">2,500</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy poisw</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Andrewsarchus</td>
+                                <td class="py-3 px-4">3,500</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy andrew</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Aberrant Angler</td>
+                                <td class="py-3 px-4">750</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy angler</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Baryonyx</td>
+                                <td class="py-3 px-4">850</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy bary</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ab Baryonyx</td>
+                                <td class="py-3 px-4">800</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abbary</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Basilosaurus</td>
+                                <td class="py-3 px-4">2,000</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy basil</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">X-Basilo</td>
+                                <td class="py-3 px-4">2,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xbasil</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Castoroides</td>
+                                <td class="py-3 px-4">900</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy beaver</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Diplocaulus</td>
+                                <td class="py-3 px-4">700</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy diploc</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Dunkleosteus</td>
+                                <td class="py-3 px-4">1200</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy dunk</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">X-Dunkleosteus</td>
+                                <td class="py-3 px-4">1,100</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xdunk</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Hesperonis</td>
+                                <td class="py-3 px-4">800</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy hesp</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ichthyosaurus</td>
+                                <td class="py-3 px-4">950</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy dolphin</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">X-Ichthyo</td>
+                                <td class="py-3 px-4">950</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xdolphin</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Liopleuodon</td>
+                                <td class="py-3 px-4">1,500</td>
+                                <td class="py-3 px-4">Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy liop</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Megachelon</td>
+                                <td class="py-3 px-4">1,700</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy megach</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Megalodon</td>
+                                <td class="py-3 px-4">850</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy shark</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">X-Megalodon</td>
+                                <td class="py-3 px-4">850</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xshark</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Mosasaurus</td>
+                                <td class="py-3 px-4">5,000</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy mosa</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">X-Mosasaurus</td>
+                                <td class="py-3 px-4">5,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xmosa</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Otter</td>
+                                <td class="py-3 px-4">950</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy otter</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">X-Otter</td>
+                                <td class="py-3 px-4">900</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xotter</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ab Otter</td>
+                                <td class="py-3 px-4">900</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abotter</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Plesiosaur</td>
+                                <td class="py-3 px-4">1,500</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy plesio</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Sarco</td>
+                                <td class="py-3 px-4">700</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy sarco</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Tusoteuthis</td>
+                                <td class="py-3 px-4">5,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy tuso</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Achatina</td>
+                                <td class="py-3 px-4">750</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy snail</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ab Achatina</td>
+                                <td class="py-3 px-4">700</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy absnail</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Allosaurus</td>
+                                <td class="py-3 px-4">1,100</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy allo</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">X-Allosaurus</td>
+                                <td class="py-3 px-4">1,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xallo</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Amargasaurus</td>
+                                <td class="py-3 px-4">1,200</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy amarg</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ankylosaurus</td>
+                                <td class="py-3 px-4">900</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy anky</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">X-Ankylo</td>
+                                <td class="py-3 px-4">900</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xanky</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ab Ankylo</td>
+                                <td class="py-3 px-4">900</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abanky</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Basilisk</td>
+                                <td class="py-3 px-4">1,500</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy basilisk</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Beelzebufo</td>
+                                <td class="py-3 px-4">800</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy frog</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ab Beelzebufo</td>
+                                <td class="py-3 px-4">800</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abfrog</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Bloodstalker</td>
+                                <td class="py-3 px-4">700</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy bloodst</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Brontosaurus</td>
+                                <td class="py-3 px-4">1000</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy bronto</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">R-Brontosaurus</td>
+                                <td class="py-3 px-4">950</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rbronto</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Carbonemys</td>
+                                <td class="py-3 px-4">500</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy carbo</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ab-Carbonemys</td>
+                                <td class="py-3 px-4">500</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abcarbo</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">R-Carbonemys</td>
+                                <td class="py-3 px-4">500</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rcarbo</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Carchar</td>
+                                <td class="py-3 px-4">5,000</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy carc</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ab-Carnotaurus</td>
+                                <td class="py-3 px-4">600</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy carno</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">R-Carnotaurus</td>
+                                <td class="py-3 px-4">600</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rcarno</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Chalicotherium</td>
+                                <td class="py-3 px-4">700</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy chalico</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Daeodon</td>
+                                <td class="py-3 px-4">850</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy daeo</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">R-Daeodon</td>
+                                <td class="py-3 px-4">850</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rdaeo</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Deinoychus</td>
+                                <td class="py-3 px-4">950</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy deinoy</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Dimetrodon</td>
+                                <td class="py-3 px-4">800</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy dimet</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ab-Dimetrodon</td>
+                                <td class="py-3 px-4">800</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abdimet</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Dinopithecus</td>
+                                <td class="py-3 px-4">950</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy dinop</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Direbear</td>
+                                <td class="py-3 px-4">1,000</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy direb</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Aberrant Direbear</td>
+                                <td class="py-3 px-4">1,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy direab</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Direwolf</td>
+                                <td class="py-3 px-4">700</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy direw</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">R-Direwolf</td>
+                                <td class="py-3 px-4">700</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rdirew</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Doedicurus</td>
+                                <td class="py-3 px-4">850</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy doed</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ab Doedicurus</td>
+                                <td class="py-3 px-4">800</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abdoe</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">AB Dung Beetle</td>
+                                <td class="py-3 px-4">450</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy dung</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Equus</td>
+                                <td class="py-3 px-4">700</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy equus</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ab-Equus</td>
+                                <td class="py-3 px-4">700</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abequus</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">R-Equus</td>
+                                <td class="py-3 px-4">700</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy requus</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ferox</td>
+                                <td class="py-3 px-4">2,500</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy ferox</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Gacha</td>
+                                <td class="py-3 px-4">1,500</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy gacha</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Gigantopithecus</td>
+                                <td class="py-3 px-4">950</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy giga</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">R-Giganotosaurus</td>
+                                <td class="py-3 px-4">5,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rgiga</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Giganotosaurus</td>
+                                <td class="py-3 px-4">5,000</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy giga</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Hyaenodon</td>
+                                <td class="py-3 px-4">3,500</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy hyaen</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Iguanodon</td>
+                                <td class="py-3 px-4">850</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy iggy</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Jerboa</td>
+                                <td class="py-3 px-4">450</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy jerb</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Kairuku</td>
+                                <td class="py-3 px-4">450</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy kair</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Kaprosuchus</td>
+                                <td class="py-3 px-4">800</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy kapro</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Karkinos</td>
+                                <td class="py-3 px-4">3,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy kark</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Kentrosaurus</td>
+                                <td class="py-3 px-4">950</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy kentro</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Maewing</td>
+                                <td class="py-3 px-4">1,000</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy maewing</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Magmasaur</td>
+                                <td class="py-3 px-4">3,500</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy magma</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Mammoth</td>
+                                <td class="py-3 px-4">950</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy mammo</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Managarmr</td>
+                                <td class="py-3 px-4">2,500</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy mana</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Mantis</td>
+                                <td class="py-3 px-4">2,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy mantis</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Megalania</td>
+                                <td class="py-3 px-4">1,000</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy megalania</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ab Maglosaurus</td>
+                                <td class="py-3 px-4">2,500</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy megalo</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Mek</td>
+                                <td class="py-3 px-4">5,000</td>
+                                <td class="py-3 px-4">Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy mek</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Megatherium</td>
+                                <td class="py-3 px-4">1,200</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy megath</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">R-Megatherium</td>
+                                <td class="py-3 px-4">1,200</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rmegath</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Morellatops</td>
+                                <td class="py-3 px-4">950</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy morella</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Moschops</td>
+                                <td class="py-3 px-4">1,000</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy mosch</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Oviraptor</td>
+                                <td class="py-3 px-4">900</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy ovir</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ovis</td>
+                                <td class="py-3 px-4">900</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy ovis</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ab Ovis</td>
+                                <td class="py-3 px-4">900</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abovis</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Parasaur</td>
+                                <td class="py-3 px-4">800</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy paras</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">R-Parasaur</td>
+                                <td class="py-3 px-4">800</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rpara</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">X-Parasaur</td>
+                                <td class="py-3 px-4">800</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xpara</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ab Parasaur</td>
+                                <td class="py-3 px-4">800</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abpara</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Tek Parasaur</td>
+                                <td class="py-3 px-4">1,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy tekpara</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Phiomia</td>
+                                <td class="py-3 px-4">450</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy phioma</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Procoptodon</td>
+                                <td class="py-3 px-4">950</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy kangaroo</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">R-Procoptodon</td>
+                                <td class="py-3 px-4">950</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rkang</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Purlovia</td>
+                                <td class="py-3 px-4">900</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy purlo</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ab Purlovia</td>
+                                <td class="py-3 px-4">850</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abpurlo</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Raptor</td>
+                                <td class="py-3 px-4">800</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rap</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">X-Raptor</td>
+                                <td class="py-3 px-4">900</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xrap</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ab Raptor</td>
+                                <td class="py-3 px-4">900</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abrap</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Tek Raptor</td>
+                                <td class="py-3 px-4">900</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy tekrap</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ravager</td>
+                                <td class="py-3 px-4">1,200</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy ravag</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Reaper</td>
+                                <td class="py-3 px-4">7500</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy reaper</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">R-Reaper</td>
+                                <td class="py-3 px-4">8000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rreaper</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Rex</td>
+                                <td class="py-3 px-4">4,500</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rex</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Tek Rex</td>
+                                <td class="py-3 px-4">5,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy tekrex</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">X-Rex</td>
+                                <td class="py-3 px-4">5,500</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xrex</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Rock Drake</td>
+                                <td class="py-3 px-4">5,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy drake</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Rock Elemental</td>
+                                <td class="py-3 px-4">5000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rocke</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">X-Rock Elemental</td>
+                                <td class="py-3 px-4">5,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xrocke</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Snow Elemental</td>
+                                <td class="py-3 px-4">5,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy srocke</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Roll Rat</td>
+                                <td class="py-3 px-4">950</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rollr</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Sabertooth</td>
+                                <td class="py-3 px-4">850</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy saber</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">X-Sabertooth</td>
+                                <td class="py-3 px-4">850</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xsaber</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Shadowmane</td>
+                                <td class="py-3 px-4">7,500</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy shadowm</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Spinosaurus</td>
+                                <td class="py-3 px-4">5,000</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy spino</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ab Spino</td>
+                                <td class="py-3 px-4">7,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abspino</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">X-Spino</td>
+                                <td class="py-3 px-4">7,500</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xspino</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Stegosaurus</td>
+                                <td class="py-3 px-4">950</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy stego</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ab Stegosaurus</td>
+                                <td class="py-3 px-4">900</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abstego</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Tek Stego</td>
+                                <td class="py-3 px-4">1,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy teks</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Tek Stryder</td>
+                                <td class="py-3 px-4">10,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy stryder</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Therizino</td>
+                                <td class="py-3 px-4">1,500</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy theri</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Thorny Dragon</td>
+                                <td class="py-3 px-4">1,000</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy thorny</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Thylacoleo</td>
+                                <td class="py-3 px-4">2,500</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy thyla</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">R-Thylacoleo</td>
+                                <td class="py-3 px-4">2,500</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rthyla</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Ab Triceratops</td>
+                                <td class="py-3 px-4">950</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy trike</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">X-Triceratops</td>
+                                <td class="py-3 px-4">900</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xtrike</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Troodon</td>
+                                <td class="py-3 px-4">1,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy troodon</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Unicorn</td>
+                                <td class="py-3 px-4">9,500</td>
+                                <td class="py-3 px-4">Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy unicorn</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Velonosaur</td>
+                                <td class="py-3 px-4">1,200</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy velono</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">R-Velonosaur</td>
+                                <td class="py-3 px-4">1,200</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rvelo</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Rhino</td>
+                                <td class="py-3 px-4">1,100</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rhino</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">X-Rhino</td>
+                                <td class="py-3 px-4">1,000</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xrhino</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Yutyrannus</td>
+                                <td class="py-3 px-4">1,800</td>
+                                <td class="py-3 px-4">Free</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy yuty</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">X-Yutyrannus</td>
+                                <td class="py-3 px-4">1,500</td>
+                                <td class="py-3 px-4">Gold,Platinum</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xyuty</td>
+                            </tr>
+                            <!-- More dino entries can be added here following the same structure -->
+                        </tbody>
+                    </table>
+                </div>
 
-			</div>
+                <h3 class="text-2xl font-bold text-white mt-8 mb-3">General Commands</h3>
+                <div class="overflow-x-auto rounded-lg shadow-lg">
+                    <table class="min-w-full">
+                        <thead>
+                            <tr>
+                                <th class="py-3 px-4 uppercase font-semibold text-sm text-gray-100 bg-gray-600 rounded-tl-lg">Name</th>
+                                <th class="py-3 px-4 uppercase font-semibold text-sm text-gray-100 bg-gray-600">Points</th>
+                                <th class="py-3 px-4 uppercase font-semibold text-sm text-gray-100 bg-gray-600 rounded-tr-lg">Command</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-gray-700 divide-y divide-gray-600">
+                            <tr>
+                                <td class="py-3 px-4">Dino Change Gender</td>
+                                <td class="py-3 px-4">100</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/cg</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Shop</td>
+                                <td class="py-3 px-4">0</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/shop</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Points</td>
+                                <td class="py-3 px-4">0</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/points <span class="text-gray-400 text-sm italic">(shows your points)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Dino Claim Babies</td>
+                                <td class="py-3 px-4">0</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/claimbabies</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Get body on death</td>
+                                <td class="py-3 px-4">20</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/getbody 1</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Show bodies on death</td>
+                                <td class="py-3 px-4">0</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/bodies</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Dino Fastpod Range</td>
+                                <td class="py-3 px-4">0</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/pods <span class="text-gray-400 text-sm italic">(example: /pods giga)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Dino Fastpod Single</td>
+                                <td class="py-3 px-4">0</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/pod</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Dino Imprint</td>
+                                <td class="py-3 px-4">100</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/imprint <span class="text-gray-400 text-sm italic">(imprints Dino to 100%)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Dino Kill</td>
+                                <td class="py-3 px-4">0</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/dkill <span class="text-gray-400 text-sm italic">(kills dino you are looking at)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Dino No Mate</td>
+                                <td class="py-3 px-4">0</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/nomatedinos <span class="text-gray-400 text-sm italic">(disables mating in area)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Dino Rename Range</td>
+                                <td class="py-3 px-4">0</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/renamedinos</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Dino Wake</td>
+                                <td class="py-3 px-4">0</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/wake</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-		<!-- BG -->
-			<div id="bg"></div>
+                <p class="text-center text-lg text-white mt-8 mb-4"><strong>Item Collector:</strong> (When looking at a vault or fridge use the following commands below)</p>
+                <div class="overflow-x-auto rounded-lg shadow-lg">
+                    <table class="min-w-full">
+                        <thead>
+                            <tr>
+                                <th class="py-3 px-4 uppercase font-semibold text-sm text-gray-100 bg-gray-600 rounded-tl-lg">Name</th>
+                                <th class="py-3 px-4 uppercase font-semibold text-sm text-gray-100 bg-gray-600">Command</th>
+                                <th class="py-3 px-4 uppercase font-semibold text-sm text-gray-100 bg-gray-600 rounded-tr-lg">Information</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-gray-700 divide-y divide-gray-600">
+                            <tr>
+                                <td class="py-3 px-4">Oil Collector</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/collectoil</td>
+                                <td class="py-3 px-4">will force the Storage Box or Vault you are looking at to start collecting oil from Tusoteuthis and Basilosaurus in the area.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Phoenix Pearl Collector</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/collectpearls</td>
+                                <td class="py-3 px-4">will force the Storage Box or Vault you are looking at to start collecting Phoenix pearls in the area.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Achatina Paste Collector</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/collectpaste</td>
+                                <td class="py-3 px-4">will force the Storage Box or Vault you are looking at to start collecting Achatina Paste in the area.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Achatina Organic Polymer Collector</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/collectpoly</td>
+                                <td class="py-3 px-4">will force the Storage Box or Vault you are looking at to start collecting Achatina Organic Polymer in the area and convert it to regular Polymer.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Crystal Collector</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/collectcrystals</td>
+                                <td class="py-3 px-4">will force the Storage Box or Vault you are looking at to start collecting Gacha crystals in the area.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Fertilized Egg Collector</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/collecteggsfert</td>
+                                <td class="py-3 px-4">will force the refrigerator or preserving bin you are looking at to start collecting fertilized eggs in the area.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Egg Collector</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/collecteggs</td>
+                                <td class="py-3 px-4">will force the refrigerator or preserving bin you are looking at to start collecting dropped eggs in the area.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Poop Collector</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/collectpoop</td>
+                                <td class="py-3 px-4">will force the Storage Box or Vault you are looking at to start collecting poop in the area.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4">Pellet Collector</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono">/collectpellets</td>
+                                <td class="py-3 px-4">will force the Storage Box or Vault you are looking at to start collecting owl pellets in the area.&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+            <!-- Server List Section -->
+            <article id="ServerList" class="mb-8">
+                <h2 class="text-4xl font-bold text-white mb-6 border-b-2 border-blue-500 pb-2">Server List</h2>
 
-	</body>
+                <div class="text-center mb-8">
+                    <h3 class="text-3xl font-semibold text-white mb-3">Palworld</h3>
+                    <p class="text-gray-300 mb-4">
+                        1. First, launch Palworld and click "Join multiplayer game"<br>
+                        2. Then, in the field beneath the server list, enter in the server address.
+                    </p>
+                    <div class="flex flex-col items-center space-y-4">
+                        <input type="text" value="palworld.techyservers.com:8211" id="palworldInput" readonly class="bg-gray-700 border border-gray-600 rounded-lg py-2 px-4 text-gray-200 w-full max-w-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button id="copyPalworldButton" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300 shadow-md">Click to Copy</button>
+                    </div>
+                    <p class="text-gray-300 mt-4">3. Lastly, select the Connect button.</p>
+                </div>
+
+                <div class="text-center mb-8">
+                    <h3 class="text-3xl font-semibold text-white mb-3">ARK Ascended Servers</h3>
+                    <p class="text-gray-300 mb-4">
+                        1. First, launch Ark Survival Ascended and click "join game" via the main menu.<br>
+                        2. Click the "unofficial" text at the top.<br>
+                        3. Confirm you have the "show player servers" box checked as shown below.<br>
+                        4. Search the keyword "techy" and press the "enter" key twice.
+                    </p>
+                    <img src="https://i.imgur.com/IQiWsxf.png" alt="ARK Ascended Server List Example" class="mx-auto rounded-lg shadow-md mt-4 w-full md:max-w-xl">
+                </div>
+
+                <div class="text-center">
+                    <h3 class="text-3xl font-semibold text-white mb-3">ARK Survival Evolved</h3>
+                    <p class="text-gray-300 mb-4">
+                        1. First, launch Ark Survival Evolved and click "join game" via the main menu.<br>
+                        2. Click the "unofficial" tab at the bottom.<br>
+                        3. Search the keyword "techy" and search.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Contact Section -->
+            <article id="Contact" class="mb-8">
+                <h2 class="text-4xl font-bold text-white mb-6 border-b-2 border-blue-500 pb-2">Contact</h2>
+                <section>
+                    <p class="text-gray-300">Please send any incidents to my email <strong class="text-blue-400">TechyServers@outlook.com</strong> or contact me on our discord username:<strong class="text-blue-400">TechyANT</strong></p>
+                </section>
+            </article>
+
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer" class="bg-gray-800 p-6 text-center text-gray-400 rounded-t-xl shadow-lg mt-8">
+            <p class="copyright">&copy; Techy Servers.com</p>
+        </footer>
+
+    </div>
+
+    <!-- BG (Keeping it simple, could be expanded with CSS for more effects) -->
+    <div id="bg" class="fixed inset-0 -z-10 bg-gradient-to-br from-gray-900 to-gray-800"></div>
+
+    <!-- Custom message box for copy operations -->
+    <div id="copyMessageBox" class="copy-message"></div>
+
+    <!-- Scripts -->
+    <script>
+        /**
+         * Handles the tab switching functionality.
+         * Hides all tab content and deactivates all tab buttons,
+         * then shows the selected tab content and activates its button.
+         * @param {Event} evt - The click event.
+         * @param {string} tabName - The ID of the tab content to display.
+         */
+        function openGameTab(evt, tabName) {
+            // Get all elements with class="tabcontent" and hide them
+            const tabcontent = document.getElementsByClassName("tabcontent");
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the "active" class
+            const tablinks = document.getElementsByClassName("tablinks");
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active", "bg-blue-600", "text-white"); // Remove active classes
+                tablinks[i].classList.add("bg-gray-700", "text-gray-200"); // Reapply default styling
+            }
+
+            // Show the specific tab content
+            document.getElementById(tabName).style.display = "block";
+
+            // Add the "active" class to the button that opened the tab
+            evt.currentTarget.classList.add("active", "bg-blue-600", "text-white"); // Add active classes
+            evt.currentTarget.classList.remove("bg-gray-700", "text-gray-200"); // Remove default styling
+        }
+
+        /**
+         * Displays a temporary message box at the bottom of the screen.
+         * @param {string} message - The message to display.
+         * @param {string} type - 'success' or 'error' to change background color.
+         */
+        function showMessageBox(message, type = 'success') {
+            const msgBox = document.getElementById('copyMessageBox');
+            msgBox.textContent = message;
+            if (type === 'success') {
+                msgBox.style.backgroundColor = '#48bb78'; /* Tailwind green-500 */
+            } else {
+                msgBox.style.backgroundColor = '#ef4444'; /* Tailwind red-500 */
+            }
+            msgBox.classList.add('show');
+
+            // Hide the message after a few seconds
+            setTimeout(() => {
+                msgBox.classList.remove('show');
+            }, 3000);
+        }
+
+        /**
+         * Handles copying text to the clipboard and provides visual feedback.
+         * @param {string} inputId - The ID of the input element containing the text to copy.
+         * @param {string} buttonId - The ID of the button that triggers the copy action.
+         */
+        function copyTextToClipboard(inputId, buttonId) {
+            const copyText = document.getElementById(inputId);
+            const button = document.getElementById(buttonId);
+
+            // Select the text field
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+
+            try {
+                // Copy the text inside the text field
+                document.execCommand("copy");
+                showMessageBox("Copied: " + copyText.value, 'success');
+                // Temporarily change button text
+                button.textContent = "Copied!";
+                setTimeout(() => {
+                    button.textContent = "Click to Copy";
+                }, 2000); // Revert button text after 2 seconds
+            } catch (err) {
+                console.error("Failed to copy text: ", err);
+                showMessageBox("Failed to copy text. Please copy manually.", 'error');
+            }
+        }
+
+        // Event listener for Palworld copy button
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('copyPalworldButton').addEventListener('click', () => {
+                copyTextToClipboard('palworldInput', 'copyPalworldButton');
+            });
+
+            // Initialize the first tab (ARK Ascended) to be open by default
+            const initialTabButton = document.querySelector('.tablinks');
+            if (initialTabButton) {
+                initialTabButton.click();
+            }
+        });
+    </script>
+</body>
 </html>
