@@ -6,6 +6,8 @@
     <title>TechyServers</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for a technical look -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* Custom styles for the tab content to ensure it's hidden by default */
         .tabcontent {
@@ -106,6 +108,48 @@
         .dino-commands-scroll::-webkit-scrollbar-thumb:hover {
             background: #2563eb; /* Darker blue on hover */
         }
+
+        /* Styling for the logo container (original image) */
+        .logo {
+            position: relative; /* Needed for any potential future shine or effects directly on the image */
+            overflow: hidden;
+            border-radius: 0.75rem; /* Consistent rounded corners */
+        }
+
+        /* Technical font and glow for H1 title (main TechyServers text) */
+        .technical-title {
+            font-family: 'Orbitron', sans-serif; /* Applied new font */
+            text-shadow: 0 0 5px #3b82f6, /* Subtle blue glow */
+                         0 0 10px #3b82f6,
+                         0 0 15px #3b82f6;
+            color: #ffffff; /* Ensure text is white for glow effect */
+            position: relative; /* Needed for the shine animation */
+            overflow: hidden; /* Contains the shine effect within the text bounds */
+            display: inline-block; /* Essential to allow overflow:hidden on text for pseudo-element to work */
+            /* Removed horizontal padding that caused the rectangular crop */
+        }
+
+        /* Shine animation for the H1 title */
+        .technical-title::after {
+            content: '';
+            position: absolute;
+            top: -20%; /* Adjusted to cover text height */
+            left: -100%; /* Start outside the left edge of the text */
+            width: 150%; /* Wider than the text to ensure full sweep, adjusted from 200% */
+            height: 140%; /* Taller than text to ensure full sweep */
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0) 100%); /* Soft gradient shine, slightly stronger */
+            transform: skewX(-20deg); /* Angle for a sleek look */
+            animation: text-shine 3s infinite ease-in-out; /* Animation duration and loop */
+        }
+
+        @keyframes text-shine {
+            0% {
+                left: -100%; /* Start from left */
+            }
+            100% {
+                left: 100%; /* End at right */
+            }
+        }
     </style>
 </head>
 <body class="is-preload bg-gray-900 text-gray-200">
@@ -114,14 +158,16 @@
     <div id="wrapper" class="min-h-screen flex flex-col">
 
         <!-- Header -->
-        <header id="header" class="bg-gray-800 p-6 flex flex-col md:flex-row items-center justify-between rounded-b-xl shadow-lg">
+        <header id="header" class="bg-gray-800 p-6 flex flex-col md:flex-row items-center justify-between rounded-b-xl shadow-lg sticky top-0 w-full z-50">
             <div class="logo mb-4 md:mb-0 md:mr-6">
+                <!-- Reverted to original image logo -->
                 <img src="images/Alpha_Ascension_Implant.webp" alt="Alpha_Ascension_Implant" class="w-24 h-24 object-cover rounded-full border-4 border-blue-500 shadow-md">
             </div>
             <div class="content text-center md:text-left flex-grow">
                 <div class="inner">
-                    <h1 class="text-5xl font-extrabold text-white mb-2 tracking-wide">TechyServers</h1>
-                    <p class="text-xl text-gray-400">Better Rates - Fiber Network - Peaceful Fun!</p>
+                    <!-- Shine effect applied to this H1 text -->
+                    <h1 class="text-5xl font-extrabold text-white mb-2 tracking-wide technical-title">TechyServers</h1>
+                    <p class="text-xl text-gray-400">Your Epic Journey Starts Here.</p>
                 </div>
             </div>
             <nav class="mt-6 md:mt-0">
@@ -143,14 +189,37 @@
             <article id="Rates" class="mb-8">
                 <h2 class="text-4xl font-bold text-white mb-6 border-b-2 border-blue-500 pb-2">Server Rates</h2>
 
-                <!-- Tab Buttons -->
+                <!-- Tab Buttons (ARK Evolved first) -->
                 <div class="tab flex border-b border-gray-700">
-                    <button class="tablinks bg-gray-700 text-gray-200 px-6 py-3 text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none" onclick="openGameTab(event, 'Ascended')">ARK Ascended</button>
                     <button class="tablinks bg-gray-700 text-gray-200 px-6 py-3 text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none" onclick="openGameTab(event, 'Evolved')">ARK Evolved</button>
+                    <button class="tablinks bg-gray-700 text-gray-200 px-6 py-3 text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none" onclick="openGameTab(event, 'Ascended')">ARK Ascended</button>
                     <button class="tablinks bg-gray-700 text-gray-200 px-6 py-3 text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none" onclick="openGameTab(event, 'Palworld')">Palworld</button>
                 </div>
 
-                <!-- Tab Content: ARK Ascended -->
+                <!-- Tab Content: ARK Evolved (now first) -->
+                <div id="Evolved" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
+                    <h3 class="text-3xl font-semibold text-white mb-4">ARK Evolved Rates</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li><span class="font-bold">5x</span> Taming</li>
+                        <li><span class="font-bold">3x</span> Harvesting</li>
+                        <li><span class="font-bold">20x</span> Breeding</li>
+                        <li><span class="font-bold">3x</span> Drops and custom drops (Kibble,wyvern milk,nameless venom, armor etc)</li>
+                        <li><span class="font-bold">1k-10k</span> Item stack rate depending on resource</li>
+                        <li>Max wild dino level is <span class="font-bold">200</span> (No dino level cap for server breeding)</li>
+                        <li>Obelisk decay time = <span class="font-bold">30 days</span></li>
+                        <li>Structer decay time = <span class="font-bold">12d</span> thatch, <span class="font-bold">24d</span> wood, <span class="font-bold">24d</span> adobe, <span class="font-bold">36d</span> stone, <span class="font-bold">48d</span> metal, <span class="font-bold">60d</span> tek</li>
+                    </ul>
+                    <h4 class="text-2xl font-bold text-white mt-6 mb-3">Plugins:</h4>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li><a href="https://gameservershub.com/forums/resources/all-engrams.14/" target="_blank" class="text-blue-400 hover:underline">All Engrams</a></li>
+                        <li><a href="https://gameservershub.com/forums/resources/dino-utilities-free.270/" target="_blank" class="text-blue-400 hover:underline">Dino Utilities</a></li>
+                        <li><a href="https://gameservershub.com/forums/resources/enhanced-hlna.268/" target="_blank" class="text-blue-400 hover:underline">Enhanced HLNA</a></li>
+                        <li><a href="https://gameservershub.com/forums/resources/item-collector-free.565/" target="_blank" class="text-blue-400 hover:underline">Item Collector</a></li>
+                        <li><a href="https://gameservershub.com/forums/resources/structure-utilities-pro.630/" target="_blank" class="text-blue-400 hover:underline">Structure Utilities</a></li>
+                    </ul>
+                </div>
+
+                <!-- Tab Content: ARK Ascended (now second) -->
                 <div id="Ascended" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
                     <h3 class="text-3xl font-semibold text-white mb-4">ARK Ascended Rates</h3>
                     <ul class="list-disc list-inside space-y-2 text-gray-300">
@@ -173,29 +242,6 @@
                         <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/awesometeleporters" target="_blank" class="text-blue-400 hover:underline">Awesome Teleporters</a></li>
                         <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/super-cryo-storage" target="_blank" class="text-blue-400 hover:underline">Super Cryo Storage (Dino's raise and imprint in fridges while offline) Resources produce as well.</a></li>
                         <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/custom-dino-levels" target="_blank" class="text-blue-400 hover:underline">Custom Dino Levels (Better dino levels and max lvl 200)</a></li>
-                    </ul>
-                </div>
-
-                <!-- Tab Content: ARK Evolved -->
-                <div id="Evolved" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
-                    <h3 class="text-3xl font-semibold text-white mb-4">ARK Evolved Rates</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-300">
-                        <li><span class="font-bold">5x</span> Taming</li>
-                        <li><span class="font-bold">3x</span> Harvesting</li>
-                        <li><span class="font-bold">20x</span> Breeding</li>
-                        <li><span class="font-bold">3x</span> Drops and custom drops (Kibble,wyvern milk,nameless venom, armor etc)</li>
-                        <li><span class="font-bold">1k-10k</span> Item stack rate depending on resource</li>
-                        <li>Max wild dino level is <span class="font-bold">200</span> (No dino level cap for server breeding)</li>
-                        <li>Obelisk decay time = <span class="font-bold">30 days</span></li>
-                        <li>Structer decay time = <span class="font-bold">12d</span> thatch, <span class="font-bold">24d</span> wood, <span class="font-bold">24d</span> adobe, <span class="font-bold">36d</span> stone, <span class="font-bold">48d</span> metal, <span class="font-bold">60d</span> tek</li>
-                    </ul>
-                    <h4 class="text-2xl font-bold text-white mt-6 mb-3">Plugins:</h4>
-                    <ul class="list-disc list-inside space-y-2 text-gray-300">
-                        <li><a href="https://gameservershub.com/forums/resources/all-engrams.14/" target="_blank" class="text-blue-400 hover:underline">All Engrams</a></li>
-                        <li><a href="https://gameservershub.com/forums/resources/dino-utilities-free.270/" target="_blank" class="text-blue-400 hover:underline">Dino Utilities</a></li>
-                        <li><a href="https://gameservershub.com/forums/resources/enhanced-hlna.268/" target="_blank" class="text-blue-400 hover:underline">Enhanced HLNA</a></li>
-                        <li><a href="https://gameservershub.com/forums/resources/item-collector-free.565/" target="_blank" class="text-blue-400 hover:underline">Item Collector</a></li>
-                        <li><a href="https://gameservershub.com/forums/resources/structure-utilities-pro.630/" target="_blank" class="text-blue-400 hover:underline">Structure Utilities</a></li>
                     </ul>
                 </div>
 
@@ -1446,8 +1492,9 @@
             <!-- Contact Section -->
             <article id="Contact" class="mb-8">
                 <h2 class="text-4xl font-bold text-white mb-6 border-b-2 border-blue-500 pb-2">Contact</h2>
-                <section>
+                <section class="flex flex-col items-center space-y-4">
                     <p class="text-gray-300">Please send any incidents to my email <strong class="text-blue-400">TechyServers@outlook.com</strong> or contact me on our discord username:<strong class="text-blue-400">TechyANT</strong></p>
+                    <a href="https://discord.gg/mE7f3K7CTm" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors duration-300 shadow-md transform hover:scale-105 inline-block">Click here to contact us on Discord</a>
                 </section>
             </article>
 
@@ -1552,8 +1599,8 @@
                 copyTextToClipboard('palworldInput', 'copyPalworldButton');
             });
 
-            // Initialize the first tab (ARK Ascended) to be open by default
-            const initialTabButton = document.querySelector('.tablinks');
+            // Initialize the first tab (ARK Evolved) to be open by default
+            const initialTabButton = document.querySelector('.tablinks'); // Gets the first tab button
             if (initialTabButton) {
                 initialTabButton.click();
             }
