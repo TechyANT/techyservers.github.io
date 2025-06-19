@@ -17,9 +17,11 @@
         /* Specific styling for the body to apply 'Inter' font and a dark background */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1a202c; /* Dark background */
+            background-color: #1a202c; /* Dark background as fallback */
             color: #e2e8f0; /* Light text color for contrast */
             line-height: 1.6;
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
         }
 
         /* Adjustments for the main content area for better readability */
@@ -27,6 +29,8 @@
             padding: 2rem;
             max-width: 1000px;
             margin: 0 auto;
+            position: relative; /* Ensure content is above the video */
+            z-index: 1; /* Place main content above video */
         }
 
         /* Styling for article sections */
@@ -126,7 +130,6 @@
             position: relative; /* Needed for the shine animation */
             overflow: hidden; /* Contains the shine effect within the text bounds */
             display: inline-block; /* Essential to allow overflow:hidden on text for pseudo-element to work */
-            /* Removed horizontal padding that caused the rectangular crop */
         }
 
         /* Shine animation for the H1 title */
@@ -150,9 +153,71 @@
                 left: 100%; /* End at right */
             }
         }
+
+        /* Video background container */
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Hide parts of the video that go off screen */
+            z-index: -2; /* Below the main content, above the original #bg gradient */
+            background-color: #000; /* Fallback background in case video fails to load */
+        }
+
+        #video-background iframe {
+            width: 100vw;
+            height: 56.25vw; /* 16:9 aspect ratio (9/16 = 0.5625) */
+            min-height: 100%;
+            min-width: 177.77vh; /* 16:9 aspect ratio (16/9 = 1.7777) */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none; /* Prevents clicks on the video from affecting the page */
+        }
+
+        /* Video controls styling */
+        #video-controls {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 40; /* Above main content, below header */
+            display: flex;
+            gap: 1rem; /* Space between buttons */
+        }
+
+        #video-controls button {
+            cursor: pointer;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px; /* Fully rounded */
+            font-weight: bold;
+            color: white;
+            background-color: #3b82f6; /* Blue-600 */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #video-controls button:hover {
+            background-color: #2563eb; /* Blue-700 */
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body class="is-preload bg-gray-900 text-gray-200">
+
+    <!-- Video Background Container -->
+    <div id="video-background">
+        <iframe
+            id="background-video-player"
+            src="https://www.youtube.com/embed/OlOhxvE2fFw?controls=0&autoplay=1&mute=1&loop=1&playlist=OlOhxvE2fFw&enablejsapi=1&iv_load_policy=3"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+        ></iframe>
+    </div>
 
     <!-- Wrapper -->
     <div id="wrapper" class="min-h-screen flex flex-col">
@@ -167,7 +232,7 @@
                 <div class="inner">
                     <!-- Shine effect applied to this H1 text -->
                     <h1 class="text-5xl font-extrabold text-white mb-2 tracking-wide technical-title">TechyServers</h1>
-                    <p class="text-xl text-gray-400">Your Epic Journey Starts Here.</p>
+                    <p class="text-xl text-gray-400">Where Digital Worlds Unite.</p>
                 </div>
             </div>
             <nav class="mt-6 md:mt-0">
@@ -1510,11 +1575,65 @@
     <!-- BG (Keeping it simple, could be expanded with CSS for more effects) -->
     <div id="bg" class="fixed inset-0 -z-10 bg-gradient-to-br from-gray-900 to-gray-800"></div>
 
+    <!-- Video Controls -->
+    <div id="video-controls">
+        <button id="playPauseBtn">Pause</button>
+        <button id="muteUnmuteBtn">Unmute</button>
+    </div>
+
     <!-- Custom message box for copy operations -->
     <div id="copyMessageBox" class="copy-message"></div>
 
     <!-- Scripts -->
     <script>
+        // YouTube Player API variable
+        var player;
+        let isPlaying = true; // Video starts playing
+        let isMuted = true;   // Video starts muted
+
+        /**
+         * Callback function called when the YouTube IFrame API is ready.
+         * Initializes the YouTube player.
+         */
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('background-video-player', {
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        /**
+         * Callback function called when the YouTube player is ready.
+         * Sets initial state (muted, plays video) and updates control buttons.
+         * @param {Event} event - The player ready event.
+         */
+        function onPlayerReady(event) {
+            event.target.mute(); // Ensure video starts muted
+            event.target.playVideo(); // Start playing
+            // Update button text based on initial state
+            document.getElementById('playPauseBtn').textContent = 'Pause';
+            document.getElementById('muteUnmuteBtn').textContent = 'Unmute'; // Because it starts muted
+        }
+
+        /**
+         * Callback function called when the player's state changes.
+         * Handles video looping.
+         * @param {Event} event - The player state change event.
+         */
+        function onPlayerStateChange(event) {
+            if (event.data === YT.PlayerState.ENDED) {
+                player.playVideo(); // Loop video when it ends
+            }
+        }
+
+        // Load the YouTube IFrame Player API asynchronously.
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
         /**
          * Handles the tab switching functionality.
          * Hides all tab content and deactivates all tab buttons,
@@ -1593,14 +1712,45 @@
             }
         }
 
-        // Event listener for Palworld copy button
+        // Event listener for all interactive elements once the DOM is fully loaded
         document.addEventListener('DOMContentLoaded', () => {
+            // Palworld copy button functionality
             document.getElementById('copyPalworldButton').addEventListener('click', () => {
                 copyTextToClipboard('palworldInput', 'copyPalworldButton');
             });
 
+            // Video Play/Pause button functionality
+            document.getElementById('playPauseBtn').addEventListener('click', () => {
+                if (player) { // Ensure player is initialized
+                    if (isPlaying) {
+                        player.pauseVideo();
+                        document.getElementById('playPauseBtn').textContent = 'Play';
+                    } else {
+                        player.playVideo();
+                        document.getElementById('playPauseBtn').textContent = 'Pause';
+                    }
+                    isPlaying = !isPlaying;
+                }
+            });
+
+            // Video Mute/Unmute button functionality
+            document.getElementById('muteUnmuteBtn').addEventListener('click', () => {
+                if (player) { // Ensure player is initialized
+                    if (isMuted) {
+                        player.unMute();
+                        player.setVolume(15); // Set to a light volume, e.g., 15%
+                        document.getElementById('muteUnmuteBtn').textContent = 'Mute';
+                    } else {
+                        player.mute();
+                        document.getElementById('muteUnmuteBtn').textContent = 'Unmute';
+                    }
+                    isMuted = !isMuted;
+                }
+            });
+
             // Initialize the first tab (ARK Evolved) to be open by default
-            const initialTabButton = document.querySelector('.tablinks'); // Gets the first tab button
+            // This selects the first button with class 'tablinks' and clicks it.
+            const initialTabButton = document.querySelector('.tablinks');
             if (initialTabButton) {
                 initialTabButton.click();
             }
