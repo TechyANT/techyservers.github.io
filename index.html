@@ -28,20 +28,39 @@
 
         /* Adjustments for the main content area for better readability */
         #main {
-            padding: 2rem;
+            padding: 1rem; /* Smaller padding for mobile */
             max-width: 1000px;
             margin: 0 auto;
             position: relative; /* Ensure content is above the video */
             z-index: 1; /* Place main content above video */
         }
 
+        /* Responsive padding for #main */
+        @media (min-width: 640px) { /* sm breakpoint */
+            #main {
+                padding: 1.5rem;
+            }
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            #main {
+                padding: 2rem;
+            }
+        }
+
         /* Styling for article sections - now with rgba background for transparency */
         article {
             background-color: rgba(45, 55, 72, 0.9); /* Slightly lighter dark background with 90% opacity */
             border-radius: 0.75rem; /* Rounded corners */
-            padding: 2rem;
+            padding: 1.5rem; /* Smaller padding for mobile */
             margin-bottom: 2rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow for depth */
+        }
+
+        /* Responsive padding for articles */
+        @media (min-width: 640px) { /* sm breakpoint */
+            article {
+                padding: 2rem;
+            }
         }
 
         /* Override default table styles for responsiveness and better aesthetics */
@@ -122,7 +141,46 @@
                          0 0 10px #3b82f6,
                          0 0 15px #3b82f6;
             color: #ffffff; /* Ensure text is white for glow effect */
+            position: relative; /* Needed for the shine animation */
+            overflow: hidden; /* Contains the shine effect within the text bounds */
+            display: inline-block; /* Essential to allow overflow:hidden on text for pseudo-element to work */
         }
+        /* Responsive font size for H1 title */
+        .technical-title {
+            font-size: 2.5rem; /* Default for mobile */
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .technical-title {
+                font-size: 3rem;
+            }
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .technical-title {
+                font-size: 4rem;
+            }
+        }
+
+        /* Shine animation for the H1 title - REMOVED for this request */
+        /* .technical-title::after {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -200%;
+            width: 300%;
+            height: 140%;
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.05) 70%, rgba(255,255,255,0) 100%);
+            transform: skewX(-20deg);
+            animation: text-shine 3s infinite ease-in-out;
+        }
+
+        @keyframes text-shine {
+            0% {
+                left: -200%;
+            }
+            100% {
+                left: 200%;
+            }
+        } */
 
         /* Slogan styling with more prominent glow and white text */
         .slogan-text {
@@ -133,6 +191,20 @@
                 0 0 10px #3b82f6,
                 0 0 15px #3b82f6;
             animation: pulse-slogan 4s infinite ease-in-out; /* Keep pulse animation */
+        }
+        /* Responsive font size for slogan */
+        .slogan-text {
+            font-size: 0.9rem; /* Default for mobile */
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .slogan-text {
+                font-size: 1rem;
+            }
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .slogan-text {
+                font-size: 1.125rem; /* text-lg */
+            }
         }
 
         @keyframes pulse-slogan {
@@ -154,18 +226,21 @@
             overflow: hidden; /* Hide parts of the video that go off screen */
             z-index: -2; /* Below the main content, above the original #bg gradient */
             background-color: #000; /* Fallback background in case video fails to load */
+            display: flex; /* Use flexbox to center video */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
         }
 
         #video-background video {
-            width: 100vw;
-            height: 56.25vw; /* 16:9 aspect ratio (9/16 = 0.5625) */
+            min-width: 100%;
             min-height: 100%;
-            min-width: 177.77vh; /* 16:9 aspect ratio (16/9 = 1.7777) */
+            width: auto;
+            height: auto;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            pointer-events: none; /* Prevents clicks on the video from affecting the page */
+            object-fit: cover; /* Ensures video covers the entire container while maintaining aspect ratio */
         }
 
         /* Video controls styling - positioned bottom right */
@@ -243,21 +318,35 @@
             background-color: rgba(74, 85, 104, 0.9); /* Slightly more transparent */
         }
 
-        /* Styling for the cooler navigation buttons (updated) */
+        /* Styling for the cooler navigation buttons (updated for responsiveness) */
         .nav-button {
-            padding: 0.4rem 0.8rem; /* Slightly smaller padding */
+            padding: 0.3rem 0.6rem; /* Smaller padding for mobile */
             font-weight: bold;
             color: #e2e8f0; /* Light gray text */
-            border-radius: 0.4rem; /* Slightly smaller border-radius */
+            border-radius: 0.4rem;
             text-transform: uppercase;
-            letter-spacing: 0.04em; /* Slightly less letter spacing */
+            letter-spacing: 0.04em;
             background-color: #2d3748; /* Darker gray from palette */
             border: 1px solid #4a5568; /* Subtle border */
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Softer shadow */
             transition: all 0.2s ease-in-out; /* Smooth transition */
             display: inline-block;
-            font-size: 0.8rem; /* Slightly smaller font size */
+            font-size: 0.75rem; /* Smaller font size for mobile */
         }
+
+        @media (min-width: 640px) { /* sm breakpoint */
+            .nav-button {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .nav-button {
+                padding: 0.6rem 1.2rem; /* Larger padding for desktop */
+                font-size: 0.9rem; /* Larger font size for desktop */
+            }
+        }
+
 
         .nav-button:hover {
             background-color: #3b82f6; /* Blue-500 on hover */
@@ -269,13 +358,68 @@
 
         /* Styling for the original logo image */
         .techy-logo {
-            width: 100px; /* Original size */
-            height: 100px; /* Original size */
+            width: 80px; /* Smaller default for mobile */
+            height: 80px; /* Smaller default for mobile */
             border-radius: 50%; /* Make it a circle */
-            margin-right: 1rem; /* Space between logo and text */
+            margin-right: 0.75rem; /* Space between logo and text */
             object-fit: cover; /* Ensure image covers the circular area */
             background-color: transparent; /* Keep background transparent */
         }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .techy-logo {
+                width: 90px;
+                height: 90px;
+                margin-right: 1rem;
+            }
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .techy-logo {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        /* Responsive font sizes for section headings */
+        h2 {
+            font-size: 2rem; /* Default for mobile */
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            h2 {
+                font-size: 2.5rem;
+            }
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            h2 {
+                font-size: 3rem;
+            }
+        }
+        h3 {
+            font-size: 1.5rem; /* Default for mobile */
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            h3 {
+                font-size: 1.75rem;
+            }
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            h3 {
+                font-size: 2rem;
+            }
+        }
+        h4 {
+            font-size: 1.25rem; /* Default for mobile */
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            h4 {
+                font-size: 1.5rem;
+            }
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            h4 {
+                font-size: 1.75rem;
+            }
+        }
+
 
         /* Modal styling */
         .modal {
@@ -290,23 +434,34 @@
             background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
             justify-content: center;
             align-items: center;
-            padding: 20px; /* Add some padding around the modal */
+            padding: 10px; /* Smaller padding for mobile */
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .modal {
+                padding: 20px;
+            }
         }
 
         .modal-content {
             background-color: #2d3748; /* Darker gray from palette */
             margin: auto;
-            padding: 20px;
+            padding: 15px; /* Smaller padding for mobile */
             border: 1px solid #4a5568; /* Subtle border */
-            width: 90%; /* Responsive width */
+            width: 95%; /* More responsive width for mobile */
             max-width: 800px; /* Max width for larger screens */
             border-radius: 0.75rem;
             box-shadow: 0 8px 16px rgba(0,0,0,0.4);
             position: relative;
-            max-height: 90vh; /* Max height to allow scrolling for long content */
+            max-height: 95vh; /* Max height to allow scrolling for long content */
             overflow-y: auto; /* Enable scrolling within the modal content */
             color: #e2e8f0; /* Light text color */
         }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .modal-content {
+                padding: 20px;
+            }
+        }
+
 
         .close-button {
             color: #aaa;
@@ -325,9 +480,19 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+        /* Style for clickable command cells */
+        .command-cell {
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .command-cell:hover {
+            background-color: rgba(59, 130, 246, 0.2); /* Light blue highlight on hover */
+        }
     </style>
 </head>
-<body class="is-preload bg-gray-900 text-gray-200">
+<body class="is-preload bg-gray-900 text-gray-200" oncontextmenu="return false;">
 
     <!-- Video Background Container -->
     <div id="video-background">
@@ -344,20 +509,20 @@
     <div id="wrapper" class="min-h-screen flex flex-col">
 
         <!-- Header -->
-        <header id="header" class="bg-gray-800 py-4 px-6 flex flex-col md:flex-row items-center md:justify-start rounded-b-xl shadow-lg sticky top-0 w-full z-50">
+        <header id="header" class="bg-gray-800 py-4 px-4 sm:px-6 flex flex-col md:flex-row items-center md:justify-start rounded-b-xl shadow-lg sticky top-0 w-full z-50">
             <!-- Left-aligned Branding Block (Logo + Title/Slogan) -->
             <div class="flex items-center mb-4 md:mb-0 md:mr-8">
                 <img src="https://techyservers.com/TS%20logo.png" alt="TechyServers Logo" width="100" height="100" class="techy-logo mr-4">
                 <div class="content text-left"> <!-- text-left ensures title and slogan align to left -->
                     <div class="inner">
-                        <h1 class="text-4xl font-extrabold text-white mb-2 tracking-wide technical-title">TechyServers</h1>
-                        <p class="text-md text-gray-400 slogan-text">Unleash Your Game. Powered by Precision. Crafted for Community.</p>
+                        <h1 class="font-extrabold text-white mb-2 tracking-wide technical-title">TechyServers</h1>
+                        <p class="text-gray-400 slogan-text">Unleash Your Game. Powered by Precision. Crafted for Community.</p>
                     </div>
                 </div>
             </div>
             <!-- Navigation Block - pushed to the right on desktop -->
-            <nav class="mt-6 md:mt-0 ml-auto">
-                <ul class="flex flex-wrap justify-center md:justify-start space-x-2 md:space-x-4">
+            <nav class="mt-6 md:mt-0 ml-auto w-full md:w-auto">
+                <ul class="flex flex-wrap justify-center md:justify-start gap-2 sm:gap-4">
                     <li><a href="#main" class="nav-button">Home</a></li>
                     <li><a href="#Rates" class="nav-button">Rates</a></li>
                     <li><a href="https://discord.gg/mE7f3K7CTm" target="_blank" class="nav-button">Discord</a></li>
@@ -374,19 +539,19 @@
 
             <!-- Server Rates Section -->
             <article id="Rates" class="mb-8">
-                <h2 class="text-4xl font-bold text-white mb-6 border-b-2 border-blue-500 pb-2">Server Rates</h2>
+                <h2 class="font-bold text-white mb-6 border-b-2 border-blue-500 pb-2">Server Rates</h2>
 
                 <!-- Tab Buttons (ARK Evolved first) -->
-                <div class="tab flex border-b border-gray-700">
-                    <button class="tablinks bg-gray-700 text-gray-200 px-6 py-3 text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none" onclick="openGameTab(event, 'Evolved')">ARK Evolved</button>
-                    <button class="tablinks bg-gray-700 text-gray-200 px-6 py-3 text-lg font-semibold rounded-t-lg hover:bg-600 transition-colors duration-300 focus:outline-none" onclick="openGameTab(event, 'Ascended')">ARK Ascended</button>
-                    <button class="tablinks bg-gray-700 text-gray-200 px-6 py-3 text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none" onclick="openGameTab(event, 'PrimalFear')">ARK Primal Fear</button>
-                    <button class="tablinks bg-gray-700 text-gray-200 px-6 py-3 text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none" onclick="openGameTab(event, 'Palworld')">Palworld</button>
+                <div class="tab flex flex-wrap justify-center sm:justify-start border-b border-gray-700">
+                    <button class="tablinks bg-gray-700 text-gray-200 px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none flex-grow sm:flex-grow-0 min-w-[120px] text-center">ARK Evolved</button>
+                    <button class="tablinks bg-gray-700 text-gray-200 px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none flex-grow sm:flex-grow-0 min-w-[120px] text-center">ARK Ascended</button>
+                    <button class="tablinks bg-gray-700 text-gray-200 px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none flex-grow sm:flex-grow-0 min-w-[120px] text-center">ARK Primal Fear</button>
+                    <button class="tablinks bg-gray-700 text-gray-200 px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none flex-grow sm:flex-grow-0 min-w-[120px] text-center">Palworld</button>
                 </div>
 
                 <!-- Tab Content: ARK Evolved (now first) -->
                 <div id="Evolved" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
-                    <h3 class="text-3xl font-semibold text-white mb-4">ARK Evolved Rates</h3>
+                    <h3 class="font-semibold text-white mb-4">ARK Evolved Rates</h3>
                     <ul class="list-disc list-inside space-y-2 text-gray-300">
                         <li><span class="font-bold">5x</span> Taming</li>
                         <li><span class="font-bold">3x</span> Harvesting</li>
@@ -397,7 +562,7 @@
                         <li>Obelisk decay time: <span class="font-bold">30 days</span></li>
                         <li>Structure decay time: <span class="font-bold">12d</span> thatch, <span class="font-bold">24d</span> wood, <span class="font-bold">24d</span> adobe, <span class="font-bold">36d</span> stone, <span class="font-bold">48d</span> metal, <span class="font-bold">60d</span> Tek</li>
                     </ul>
-                    <h4 class="text-2xl font-bold text-white mt-6 mb-3">Plugins:</h4>
+                    <h4 class="font-bold text-white mt-6 mb-3">Plugins:</h4>
                     <ul class="list-disc list-inside space-y-2 text-gray-300">
                         <li><a href="https://gameservershub.com/forums/resources/all-engrams.14/" target="_blank" class="text-blue-400 hover:underline">All Engrams</a></li>
                         <li><a href="https://gameservershub.com/forums/resources/dino-utilities-free.270/" target="_blank" class="text-blue-400 hover:underline">Dino Utilities (Free)</a></li>
@@ -409,7 +574,7 @@
 
                 <!-- Tab Content: ARK Ascended (now second) -->
                 <div id="Ascended" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
-                    <h3 class="text-3xl font-semibold text-white mb-4">ARK Ascended Rates</h3>
+                    <h3 class="font-semibold text-white mb-4">ARK Ascended Rates</h3>
                     <ul class="list-disc list-inside space-y-2 text-gray-300">
                         <li><span class="font-bold">5x</span> Taming</li>
                         <li><span class="font-bold">5x</span> Harvesting</li>
@@ -419,7 +584,7 @@
                         <li>Dino decay time: <span class="font-bold">30 days</span></li>
                         <li><span class="font-bold">24/7</span> Server uptime</li>
                     </ul>
-                    <h4 class="text-2xl font-bold text-white mt-6 mb-3">Mods</h4>
+                    <h4 class="font-bold text-white mt-6 mb-3">Mods</h4>
                     <ul class="list-disc list-inside space-y-2 text-gray-300">
                         <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/automated-ark" target="_blank" class="text-blue-400 hover:underline">Automated ARK</a></li>
                         <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/awesomespyglass" target="_blank" class="text-blue-400 hover:underline">Awesome Spyglass</a></li>
@@ -435,13 +600,13 @@
 
                 <!-- Tab Content: ARK Primal Fear (New Tab) -->
                 <div id="PrimalFear" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
-                    <h3 class="text-3xl font-semibold text-white mb-4">ARK Primal Rates</h3>
+                    <h3 class="font-semibold text-white mb-4">ARK Primal Rates</h3>
                     <p class="text-gray-300">Coming soon!</p>
                 </div>
 
                 <!-- Tab Content: Palworld -->
                 <div id="Palworld" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
-                    <h3 class="text-3xl font-semibold text-white mb-4">Palworld Rates</h3>
+                    <h3 class="font-semibold text-white mb-4">Palworld Rates</h3>
                     <ul class="list-disc list-inside space-y-2 text-gray-300">
                         <li><span class="font-bold">5x</span> Catch rate</li>
                         <li><span class="font-bold">5x</span> XP</li>
@@ -457,9 +622,9 @@
 
             <!-- Shop Commands Section -->
             <article id="commands" class="mb-8">
-                <h2 class="text-4xl font-bold text-white mb-6 border-b-2 border-blue-500 pb-2">Shop Commands</h2>
+                <h2 class="font-bold text-white mb-6 border-b-2 border-blue-500 pb-2">Shop Commands</h2>
 
-                <h3 class="text-2xl font-bold text-white mt-6 mb-3">Dino Commands</h3>
+                <h3 class="font-bold text-white mt-6 mb-3">Dino Commands</h3>
                 <!-- Search box for Dino Commands -->
                 <div class="mb-4">
                     <input type="text" id="dinoSearchInput" placeholder="Search for a dino or command..." class="bg-gray-700 border border-gray-600 rounded-lg py-2 px-4 text-gray-200 w-full max-w-md focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -472,8 +637,8 @@
                             <tr>
                                 <th class="sticky top-0 bg-gray-600 py-3 px-4 uppercase font-semibold text-sm text-gray-100 z-10 rounded-tl-lg">Dinos</th>
                                 <th class="sticky top-0 bg-gray-600 py-3 px-4 uppercase font-semibold text-sm text-gray-100 z-10">Points</th>
-                                <th class="sticky top-0 bg-gray-600 py-3 px-4 uppercase font-semibold text-sm text-gray-100 z-10 rounded-tr-lg">Tier Level</th>
-                                <th class="sticky top-0 bg-gray-600 py-3 px-4 uppercase font-semibold text-sm text-gray-100 z-10">Command</th>
+                                <th class="sticky top-0 bg-gray-600 py-3 px-4 uppercase font-semibold text-sm text-gray-100 z-10">Tier Level</th>
+                                <th class="sticky top-0 bg-gray-600 py-3 px-4 uppercase font-semibold text-sm text-gray-100 z-10 rounded-tr-lg">Command</th>
                             </tr>
                         </thead>
                         <tbody class="bg-gray-700 divide-y divide-gray-600">
@@ -482,1034 +647,1034 @@
                                 <td class="py-3 px-4">Argentavis</td>
                                 <td class="py-3 px-4">500</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy argent</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy argent" title="Click to Copy">/buy argent</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Tropical Crystal Wyvern</td>
                                 <td class="py-3 px-4">2,000</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy crystalt</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy crystalt" title="Click to Copy">/buy crystalt</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Blood Crystal Wyvern</td>
                                 <td class="py-3 px-4">2,000</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy crystalb</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy crystalb" title="Click to Copy">/buy crystalb</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ember Crystal Wyvern</td>
                                 <td class="py-3 px-4">2,000</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy crystale</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy crystale" title="Click to Copy">/buy crystale</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Aberrant Dodo</td>
                                 <td class="py-3 px-4">100</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy dodo</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy dodo" title="Click to Copy">/buy dodo</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Desmodus</td>
                                 <td class="py-3 px-4">1,500</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy desmo</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy desmo" title="Click to Copy">/buy desmo</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Dimorphodon</td>
                                 <td class="py-3 px-4">500</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy dimo</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy dimo" title="Click to Copy">/buy dimo</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ab-Dimorpho</td>
                                 <td class="py-3 px-4">500</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abdimo</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy abdimo" title="Click to Copy">/buy abdimo</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Featherlight</td>
                                 <td class="py-3 px-4">750</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy feather</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy feather" title="Click to Copy">/buy feather</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Glowtail</td>
                                 <td class="py-3 px-4">750</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy glowt</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy glowt" title="Click to Copy">/buy glowt</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Bulbdog</td>
                                 <td class="py-3 px-4">750</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy bulb</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy bulb" title="Click to Copy">/buy bulb</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Fjordhawk</td>
                                 <td class="py-3 px-4">850</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy fjord</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy fjord" title="Click to Copy">/buy fjord</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Gasbags</td>
                                 <td class="py-3 px-4">950</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy gasb</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy gasb" title="Click to Copy">/buy gasb</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">R-Gasbags</td>
                                 <td class="py-3 px-4">950</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rgasb</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rgasb" title="Click to Copy">/buy rgasb</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Griffin</td>
                                 <td class="py-3 px-4">1,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy griffin</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy griffin" title="Click to Copy">/buy griffin</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Lymantria</td>
                                 <td class="py-3 px-4">700</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy lyman</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy lyman" title="Click to Copy">/buy lyman</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Pelagornis</td>
                                 <td class="py-3 px-4">650</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy pela</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy pela" title="Click to Copy">/buy pela</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Phoenix</td>
                                 <td class="py-3 px-4">5,500</td>
                                 <td class="py-3 px-4">Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy phoenix</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy phoenix" title="Click to Copy">/buy phoenix</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Pteranodon</td>
                                 <td class="py-3 px-4">500</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy pt</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy pt" title="Click to Copy">/buy pt</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Quetzal</td>
                                 <td class="py-3 px-4">2,500</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy quetz</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy quetz" title="Click to Copy">/buy quetz</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">R-Quetzal</td>
                                 <td class="py-3 px-4">2,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rquetz</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rquetz" title="Click to Copy">/buy rquetz</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Tek Quetzal</td>
                                 <td class="py-3 px-4">2,500</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy tekquetz</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy tekquetz" title="Click to Copy">/buy tekquetz</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Rhyniognatha</td>
                                 <td class="py-3 px-4">5,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rhynio</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rhynio" title="Click to Copy">/buy rhynio</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Sinomacrops</td>
                                 <td class="py-3 px-4">750</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy sino</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy sino" title="Click to Copy">/buy sino</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Snow Owl</td>
                                 <td class="py-3 px-4">800</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy snow</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy snow" title="Click to Copy">/buy snow</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">R-Snow Owl</td>
                                 <td class="py-3 px-4">800</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rsnow</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rsnow" title="Click to Copy">/buy rsnow</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Tapejara</td>
                                 <td class="py-3 px-4">600</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy tape</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy tape" title="Click to Copy">/buy tape</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Tropeognathus</td>
                                 <td class="py-3 px-4">900</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy trope</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy trope" title="Click to Copy">/buy trope</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Voidwyrm</td>
                                 <td class="py-3 px-4">7000</td>
                                 <td class="py-3 px-4">Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy voidw</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy voidw" title="Click to Copy">/buy voidw</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Vulture</td>
                                 <td class="py-3 px-4">600</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy vult</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy vult" title="Click to Copy">/buy vult</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Lightning Wyvern</td>
                                 <td class="py-3 px-4">2,500</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy lightw</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy lightw" title="Click to Copy">/buy lightw</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Fire Wyvern</td>
                                 <td class="py-3 px-4">2,500</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy firew</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy firew" title="Click to Copy">/buy firew</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Poison Wyvern</td>
                                 <td class="py-3 px-4">2,500</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy poisw</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy poisw" title="Click to Copy">/buy poisw</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Andrewsarchus</td>
                                 <td class="py-3 px-4">3,500</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy andrew</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy andrew" title="Click to Copy">/buy andrew</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Aberrant Angler</td>
                                 <td class="py-3 px-4">750</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy angler</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy angler" title="Click to Copy">/buy angler</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Baryonyx</td>
                                 <td class="py-3 px-4">850</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy bary</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy bary" title="Click to Copy">/buy bary</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ab Baryonyx</td>
                                 <td class="py-3 px-4">800</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abbary</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy abbary" title="Click to Copy">/buy abbary</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Basilosaurus</td>
                                 <td class="py-3 px-4">2,000</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy basil</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy basil" title="Click to Copy">/buy basil</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">X-Basilo</td>
                                 <td class="py-3 px-4">2,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xbasil</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy xbasil" title="Click to Copy">/buy xbasil</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Castoroides</td>
                                 <td class="py-3 px-4">900</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy beaver</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy beaver" title="Click to Copy">/buy beaver</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Diplocaulus</td>
                                 <td class="py-3 px-4">700</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy diploc</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy diploc" title="Click to Copy">/buy diploc</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Dunkleosteus</td>
                                 <td class="py-3 px-4">1200</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy dunk</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy dunk" title="Click to Copy">/buy dunk</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">X-Dunkleosteus</td>
                                 <td class="py-3 px-4">1,100</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xdunk</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy xdunk" title="Click to Copy">/buy xdunk</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Hesperonis</td>
                                 <td class="py-3 px-4">800</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy hesp</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy hesp" title="Click to Copy">/buy hesp</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ichthyosaurus</td>
                                 <td class="py-3 px-4">950</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy dolphin</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy dolphin" title="Click to Copy">/buy dolphin</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">X-Ichthyo</td>
                                 <td class="py-3 px-4">950</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xdolphin</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy xdolphin" title="Click to Copy">/buy xdolphin</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Liopleuodon</td>
                                 <td class="py-3 px-4">1,500</td>
                                 <td class="py-3 px-4">Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy liop</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy liop" title="Click to Copy">/buy liop</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Megachelon</td>
                                 <td class="py-3 px-4">1,700</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy megach</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy megach" title="Click to Copy">/buy megach</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Megalodon</td>
                                 <td class="py-3 px-4">850</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy shark</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy shark" title="Click to Copy">/buy shark</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">X-Megalodon</td>
                                 <td class="py-3 px-4">850</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xshark</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy xshark" title="Click to Copy">/buy xshark</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Mosasaurus</td>
                                 <td class="py-3 px-4">5,000</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy mosa</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy mosa" title="Click to Copy">/buy mosa</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">X-Mosasaurus</td>
                                 <td class="py-3 px-4">5,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xmosa</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy xmosa" title="Click to Copy">/buy xmosa</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Otter</td>
                                 <td class="py-3 px-4">950</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy otter</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy otter" title="Click to Copy">/buy otter</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">X-Otter</td>
                                 <td class="py-3 px-4">900</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xotter</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy xotter" title="Click to Copy">/buy xotter</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ab Otter</td>
                                 <td class="py-3 px-4">900</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abotter</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy abotter" title="Click to Copy">/buy abotter</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Plesiosaur</td>
                                 <td class="py-3 px-4">1,500</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy plesio</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy plesio" title="Click to Copy">/buy plesio</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Sarco</td>
                                 <td class="py-3 px-4">700</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy sarco</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy sarco" title="Click to Copy">/buy sarco</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Tusoteuthis</td>
                                 <td class="py-3 px-4">5,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy tuso</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy tuso" title="Click to Copy">/buy tuso</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Achatina</td>
                                 <td class="py-3 px-4">750</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy snail</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy snail" title="Click to Copy">/buy snail</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ab Achatina</td>
                                 <td class="py-3 px-4">700</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy absnail</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy absnail" title="Click to Copy">/buy absnail</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Allosaurus</td>
                                 <td class="py-3 px-4">1,100</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy allo</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy allo" title="Click to Copy">/buy allo</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">X-Allosaurus</td>
                                 <td class="py-3 px-4">1,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xallo</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy xallo" title="Click to Copy">/buy xallo</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Amargasaurus</td>
                                 <td class="py-3 px-4">1,200</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy amarg</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy amarg" title="Click to Copy">/buy amarg</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ankylosaurus</td>
                                 <td class="py-3 px-4">900</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy anky</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy anky" title="Click to Copy">/buy anky</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">X-Ankylo</td>
                                 <td class="py-3 px-4">900</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xanky</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy xanky" title="Click to Copy">/buy xanky</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ab Ankylo</td>
                                 <td class="py-3 px-4">900</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abanky</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy abanky" title="Click to Copy">/buy abanky</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Basilisk</td>
                                 <td class="py-3 px-4">1,500</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy basilisk</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy basilisk" title="Click to Copy">/buy basilisk</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Beelzebufo</td>
                                 <td class="py-3 px-4">800</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy frog</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy frog" title="Click to Copy">/buy frog</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ab Beelzebufo</td>
                                 <td class="py-3 px-4">800</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abfrog</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy abfrog" title="Click to Copy">/buy abfrog</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Bloodstalker</td>
                                 <td class="py-3 px-4">700</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy bloodst</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy bloodst" title="Click to Copy">/buy bloodst</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Brontosaurus</td>
                                 <td class="py-3 px-4">1000</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy bronto</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy bronto" title="Click to Copy">/buy bronto</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">R-Brontosaurus</td>
                                 <td class="py-3 px-4">950</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rbronto</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rbronto" title="Click to Copy">/buy rbronto</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Carbonemys</td>
                                 <td class="py-3 px-4">500</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy carbo</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy carbo" title="Click to Copy">/buy carbo</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ab-Carbonemys</td>
                                 <td class="py-3 px-4">500</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abcarbo</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy abcarbo" title="Click to Copy">/buy abcarbo</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">R-Carbonemys</td>
                                 <td class="py-3 px-4">500</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rcarbo</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rcarbo" title="Click to Copy">/buy rcarbo</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Carchar</td>
                                 <td class="py-3 px-4">5,000</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy carc</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy carc" title="Click to Copy">/buy carc</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ab-Carnotaurus</td>
                                 <td class="py-3 px-4">600</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy carno</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy carno" title="Click to Copy">/buy carno</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">R-Carnotaurus</td>
                                 <td class="py-3 px-4">600</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rcarno</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rcarno" title="Click to Copy">/buy rcarno</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Chalicotherium</td>
                                 <td class="py-3 px-4">700</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy chalico</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy chalico" title="Click to Copy">/buy chalico</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Daeodon</td>
                                 <td class="py-3 px-4">850</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy daeo</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy daeo" title="Click to Copy">/buy daeo</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">R-Daeodon</td>
                                 <td class="py-3 px-4">850</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rdaeo</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rdaeo" title="Click to Copy">/buy rdaeo</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Deinoychus</td>
                                 <td class="py-3 px-4">950</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy deinoy</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy deinoy" title="Click to Copy">/buy deinoy</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Dimetrodon</td>
                                 <td class="py-3 px-4">800</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy dimet</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy dimet" title="Click to Copy">/buy dimet</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ab-Dimetrodon</td>
                                 <td class="py-3 px-4">800</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abdimet</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy abdimet" title="Click to Copy">/buy abdimet</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Dinopithecus</td>
                                 <td class="py-3 px-4">950</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy dinop</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy dinop" title="Click to Copy">/buy dinop</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Direbear</td>
                                 <td class="py-3 px-4">1,000</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy direb</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy direb" title="Click to Copy">/buy direb</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Aberrant Direbear</td>
                                 <td class="py-3 px-4">1,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy direab</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy direab" title="Click to Copy">/buy direab</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Direwolf</td>
                                 <td class="py-3 px-4">700</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy direw</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy direw" title="Click to Copy">/buy direw</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">R-Direwolf</td>
                                 <td class="py-3 px-4">700</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rdirew</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rdirew" title="Click to Copy">/buy rdirew</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Doedicurus</td>
                                 <td class="py-3 px-4">850</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy doed</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy doed" title="Click to Copy">/buy doed</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ab Doedicurus</td>
                                 <td class="py-3 px-4">800</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abdoe</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy abdoe" title="Click to Copy">/buy abdoe</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">AB Dung Beetle</td>
                                 <td class="py-3 px-4">450</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy dung</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy dung" title="Click to Copy">/buy dung</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Equus</td>
                                 <td class="py-3 px-4">700</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy equus</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy equus" title="Click to Copy">/buy equus</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ab-Equus</td>
                                 <td class="py-3 px-4">700</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abequus</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy abequus" title="Click to Copy">/buy abequus</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">R-Equus</td>
                                 <td class="py-3 px-4">700</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy requus</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy requus" title="Click to Copy">/buy requus</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ferox</td>
                                 <td class="py-3 px-4">2,500</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy ferox</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy ferox" title="Click to Copy">/buy ferox</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Gacha</td>
                                 <td class="py-3 px-4">1,500</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy gacha</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy gacha" title="Click to Copy">/buy gacha</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Gigantopithecus</td>
                                 <td class="py-3 px-4">950</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy giga</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy giga" title="Click to Copy">/buy giga</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">R-Giganotosaurus</td>
                                 <td class="py-3 px-4">5,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rgiga</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rgiga" title="Click to Copy">/buy rgiga</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Giganotosaurus</td>
                                 <td class="py-3 px-4">5,000</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy giga</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy giga" title="Click to Copy">/buy giga</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Hyaenodon</td>
                                 <td class="py-3 px-4">3,500</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy hyaen</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy hyaen" title="Click to Copy">/buy hyaen</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Iguanodon</td>
                                 <td class="py-3 px-4">850</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy iggy</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy iggy" title="Click to Copy">/buy iggy</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Jerboa</td>
                                 <td class="py-3 px-4">450</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy jerb</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy jerb" title="Click to Copy">/buy jerb</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Kairuku</td>
                                 <td class="py-3 px-4">450</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy kair</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy kair" title="Click to Copy">/buy kair</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Kaprosuchus</td>
                                 <td class="py-3 px-4">800</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy kapro</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy kapro" title="Click to Copy">/buy kapro</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Karkinos</td>
                                 <td class="py-3 px-4">3,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy kark</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy kark" title="Click to Copy">/buy kark</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Kentrosaurus</td>
                                 <td class="py-3 px-4">950</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy kentro</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy kentro" title="Click to Copy">/buy kentro</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Maewing</td>
                                 <td class="py-3 px-4">1,000</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy maewing</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy maewing" title="Click to Copy">/buy maewing</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Magmasaur</td>
                                 <td class="py-3 px-4">3,500</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy magma</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy magma" title="Click to Copy">/buy magma</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Mammoth</td>
                                 <td class="py-3 px-4">950</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy mammo</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy mammo" title="Click to Copy">/buy mammo</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Managarmr</td>
                                 <td class="py-3 px-4">2,500</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy mana</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy mana" title="Click to Copy">/buy mana</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Mantis</td>
                                 <td class="py-3 px-4">2,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy mantis</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy mantis" title="Click to Copy">/buy mantis</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Megalania</td>
                                 <td class="py-3 px-4">1,000</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy megalania</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy megalania" title="Click to Copy">/buy megalania</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ab Maglosaurus</td>
                                 <td class="py-3 px-4">2,500</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy megalo</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy megalo" title="Click to Copy">/buy megalo</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Mek</td>
                                 <td class="py-3 px-4">5,000</td>
                                 <td class="py-3 px-4">Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy mek</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy mek" title="Click to Copy">/buy mek</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Megatherium</td>
                                 <td class="py-3 px-4">1,200</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy megath</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy megath" title="Click to Copy">/buy megath</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">R-Megatherium</td>
                                 <td class="py-3 px-4">1,200</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rmegath</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rmegath" title="Click to Copy">/buy rmegath</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Morellatops</td>
                                 <td class="py-3 px-4">950</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy morella</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy morella" title="Click to Copy">/buy morella</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Moschops</td>
                                 <td class="py-3 px-4">1,000</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy mosch</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy mosch" title="Click to Copy">/buy mosch</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Oviraptor</td>
                                 <td class="py-3 px-4">900</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy ovir</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy ovir" title="Click to Copy">/buy ovir</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ovis</td>
                                 <td class="py-3 px-4">900</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy ovis</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy ovis" title="Click to Copy">/buy ovis</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ab Ovis</td>
                                 <td class="py-3 px-4">900</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abovis</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy abovis" title="Click to Copy">/buy abovis</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Parasaur</td>
                                 <td class="py-3 px-4">800</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy paras</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy paras" title="Click to Copy">/buy paras</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">R-Parasaur</td>
                                 <td class="py-3 px-4">800</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rpara</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rpara" title="Click to Copy">/buy rpara</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">X-Parasaur</td>
                                 <td class="py-3 px-4">800</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xpara</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy xpara" title="Click to Copy">/buy xpara</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ab Parasaur</td>
                                 <td class="py-3 px-4">800</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abpara</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy abpara" title="Click to Copy">/buy abpara</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Tek Parasaur</td>
                                 <td class="py-3 px-4">1,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy tekpara</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy tekpara" title="Click to Copy">/buy tekpara</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Phiomia</td>
                                 <td class="py-3 px-4">450</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy phioma</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy phioma" title="Click to Copy">/buy phioma</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Procoptodon</td>
                                 <td class="py-3 px-4">950</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy kangaroo</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy kangaroo" title="Click to Copy">/buy kangaroo</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">R-Procoptodon</td>
                                 <td class="py-3 px-4">950</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rkang</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rkang" title="Click to Copy">/buy rkang</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Purlovia</td>
                                 <td class="py-3 px-4">900</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy purlo</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy purlo" title="Click to Copy">/buy purlo</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ab Purlovia</td>
                                 <td class="py-3 px-4">850</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abpurlo</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy abpurlo" title="Click to Copy">/buy abpurlo</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Raptor</td>
                                 <td class="py-3 px-4">800</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rap</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rap" title="Click to Copy">/buy rap</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">X-Raptor</td>
                                 <td class="py-3 px-4">900</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xrap</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy xrap" title="Click to Copy">/buy xrap</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ab Raptor</td>
                                 <td class="py-3 px-4">900</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abrap</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy abrap" title="Click to Copy">/buy abrap</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Tek Raptor</td>
                                 <td class="py-3 px-4">900</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy tekrap</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy tekrap" title="Click to Copy">/buy tekrap</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ravager</td>
                                 <td class="py-3 px-4">1,200</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy ravag</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy ravag" title="Click to Copy">/buy ravag</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Reaper</td>
                                 <td class="py-3 px-4">7500</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy reaper</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy reaper" title="Click to Copy">/buy reaper</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">R-Reaper</td>
                                 <td class="py-3 px-4">8000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rreaper</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rreaper" title="Click to Copy">/buy rreaper</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Rex</td>
                                 <td class="py-3 px-4">4,500</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rex</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rex" title="Click to Copy">/buy rex</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Tek Rex</td>
                                 <td class="py-3 px-4">5,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy tekrex</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy tekrex" title="Click to Copy">/buy tekrex</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">X-Rex</td>
                                 <td class="py-3 px-4">5,500</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xrex</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy xrex" title="Click to Copy">/buy xrex</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Rock Drake</td>
                                 <td class="py-3 px-4">5,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy drake</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy drake" title="Click to Copy">/buy drake</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Rock Elemental</td>
                                 <td class="py-3 px-4">5000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rocke</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rocke" title="Click to Copy">/buy rocke</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">X-Rock Elemental</td>
                                 <td class="py-3 px-4">5,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xrocke</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy xrocke" title="Click to Copy">/buy xrocke</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Snow Elemental</td>
                                 <td class="py-3 px-4">5,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy srocke</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy srocke" title="Click to Copy">/buy srocke</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Roll Rat</td>
                                 <td class="py-3 px-4">950</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rollr</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rollr" title="Click to Copy">/buy rollr</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Sabertooth</td>
                                 <td class="py-3 px-4">850</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy saber</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy saber" title="Click to Copy">/buy saber</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">X-Sabertooth</td>
                                 <td class="py-3 px-4">850</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xsaber</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy xsaber" title="Click to Copy">/buy xsaber</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Shadowmane</td>
                                 <td class="py-3 px-4">7,500</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy shadowm</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy shadowm" title="Click to Copy">/buy shadowm</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Spinosaurus</td>
                                 <td class="py-3 px-4">5,000</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy spino</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy spino" title="Click to Copy">/buy spino</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ab Spino</td>
                                 <td class="py-3 px-4">7,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abspino</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy abspino" title="Click to Copy">/buy abspino</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">X-Spino</td>
                                 <td class="py-3 px-4">7,500</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xspino</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy xspino" title="Click to Copy">/buy xspino</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Stegosaurus</td>
                                 <td class="py-3 px-4">950</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy stego</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy stego" title="Click to Copy">/buy stego</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ab Stegosaurus</td>
                                 <td class="py-3 px-4">900</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy abstego</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy abstego" title="Click to Copy">/buy abstego</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Tek Stego</td>
                                 <td class="py-3 px-4">1,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy teks</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy teks" title="Click to Copy">/buy teks</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Tek Stryder</td>
                                 <td class="py-3 px-4">10,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy stryder</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy stryder" title="Click to Copy">/buy stryder</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Therizino</td>
                                 <td class="py-3 px-4">1,500</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy theri</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy theri" title="Click to Copy">/buy theri</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Thorny Dragon</td>
                                 <td class="py-3 px-4">1,000</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy thorny</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy thorny" title="Click to Copy">/buy thorny</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Thylacoleo</td>
                                 <td class="py-3 px-4">2,500</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy thyla</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy thyla" title="Click to Copy">/buy thyla</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">R-Thylacoleo</td>
                                 <td class="py-3 px-4">2,500</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rthyla</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rthyla" title="Click to Copy">/buy rthyla</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Ab Triceratops</td>
                                 <td class="py-3 px-4">950</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy trike</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy trike" title="Click to Copy">/buy trike</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">X-Triceratops</td>
                                 <td class="py-3 px-4">900</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xtrike</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy xtrike" title="Click to Copy">/buy xtrike</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Troodon</td>
                                 <td class="py-3 px-4">1,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy troodon</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy troodon" title="Click to Copy">/buy troodon</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Unicorn</td>
                                 <td class="py-3 px-4">9,500</td>
                                 <td class="py-3 px-4">Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy unicorn</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy unicorn" title="Click to Copy">/buy unicorn</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Velonosaur</td>
                                 <td class="py-3 px-4">1,200</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy velono</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy velono" title="Click to Copy">/buy velono</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">R-Velonosaur</td>
                                 <td class="py-3 px-4">1,200</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rvelo</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rvelo" title="Click to Copy">/buy rvelo</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Rhino</td>
                                 <td class="py-3 px-4">1,100</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy rhino</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy rhino" title="Click to Copy">/buy rhino</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">X-Rhino</td>
                                 <td class="py-3 px-4">1,000</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xrhino</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy xrhino" title="Click to Copy">/buy xrhino</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Yutyrannus</td>
                                 <td class="py-3 px-4">1,800</td>
                                 <td class="py-3 px-4">Free</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy yuty</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy yuty" title="Click to Copy">/buy yuty</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">X-Yutyrannus</td>
                                 <td class="py-3 px-4">1,500</td>
                                 <td class="py-3 px-4">Gold,Platinum</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/buy xyuty</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy xyuty" title="Click to Copy">/buy xyuty</td>
                             </tr>
                             <!-- More dino entries can be added here following the same structure -->
                         </tbody>
                     </table>
                 </div>
 
-                <h3 class="text-2xl font-bold text-white mt-8 mb-3">General Commands</h3>
+                <h3 class="font-bold text-white mt-8 mb-3">General Commands</h3>
                 <div class="overflow-x-auto rounded-lg shadow-lg">
                     <table class="min-w-full">
                         <thead>
@@ -1523,72 +1688,72 @@
                             <tr>
                                 <td class="py-3 px-4">Dino Change Gender</td>
                                 <td class="py-3 px-4">100</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/cg</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/cg" title="Click to Copy">/cg</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Shop</td>
                                 <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/shop</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/shop" title="Click to Copy">/shop</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Points</td>
                                 <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/points <span class="text-gray-400 text-sm italic">(shows your current points)</span></td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/points" title="Click to Copy">/points <span class="text-gray-400 text-sm italic">(shows your current points)</span></td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Dino Claim Babies</td>
                                 <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/claimbabies</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/claimbabies" title="Click to Copy">/claimbabies</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Retrieve body on death</td>
                                 <td class="py-3 px-4">20</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/getbody 1</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/getbody 1" title="Click to Copy">/getbody 1</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Show bodies on death</td>
                                 <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/bodies</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/bodies" title="Click to Copy">/bodies</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Dino Fast Pod (Range)</td>
                                 <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/pods <span class="text-gray-400 text-sm italic">(example: /pods giga)</span></td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/pods" title="Click to Copy">/pods <span class="text-gray-400 text-sm italic">(example: /pods giga)</span></td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Dino Fast Pod (Single)</td>
                                 <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/pod</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/pod" title="Click to Copy">/pod</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Dino Imprint</td>
                                 <td class="py-3 px-4">100</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/imprint <span class="text-gray-400 text-sm italic">(imprints Dino to 100%)</span></td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/imprint" title="Click to Copy">/imprint <span class="text-gray-400 text-sm italic">(imprints Dino to 100%)</span></td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Dino Kill</td>
                                 <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/dkill <span class="text-gray-400 text-sm italic">(kills the dino you are looking at)</span></td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/dkill" title="Click to Copy">/dkill <span class="text-gray-400 text-sm italic">(kills the dino you are looking at)</span></td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Dino No Mate</td>
                                 <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/nomatedinos <span class="text-gray-400 text-sm italic">(disables mating in the area)</span></td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/nomatedinos" title="Click to Copy">/nomatedinos <span class="text-gray-400 text-sm italic">(disables mating in the area)</span></td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Dino Rename Range</td>
                                 <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/renamedinos</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/renamedinos" title="Click to Copy">/renamedinos</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Dino Wake</td>
                                 <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/wake</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/wake" title="Click to Copy">/wake</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Dino Reset Mating</td>
                                 <td class="py-3 px-4">150</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/resetmating</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/resetmating" title="Click to Copy">/resetmating</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1607,47 +1772,47 @@
                         <tbody class="bg-gray-700 divide-y divide-gray-600">
                             <tr>
                                 <td class="py-3 px-4">Oil Collector</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/collectoil</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/collectoil" title="Click to Copy">/collectoil</td>
                                 <td class="py-3 px-4">Forces the selected Storage Box or Vault to collect oil from Tusoteuthis and Basilosaurus in the area.</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Phoenix Pearl Collector</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/collectpearls</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/collectpearls" title="Click to Copy">/collectpearls</td>
                                 <td class="py-3 px-4">Forces the selected Storage Box or Vault to collect Phoenix pearls in the area.</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Achatina Paste Collector</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/collectpaste</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/collectpaste" title="Click to Copy">/collectpaste</td>
                                 <td class="py-3 px-4">Forces the selected Storage Box or Vault to collect Achatina Paste in the area.</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Achatina Organic Polymer Collector</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/collectpoly</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/collectpoly" title="Click to Copy">/collectpoly</td>
                                 <td class="py-3 px-4">Forces the selected Storage Box or Vault to collect Achatina Organic Polymer in the area and convert it to regular polymer.</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Crystal Collector</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/collectcrystals</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/collectcrystals" title="Click to Copy">/collectcrystals</td>
                                 <td class="py-3 px-4">Forces the selected Storage Box or Vault to collect Gacha crystals in the area.</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Fertilized Egg Collector</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/collecteggsfert</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/collecteggsfert" title="Click to Copy">/collecteggsfert</td>
                                 <td class="py-3 px-4">Forces the selected refrigerator or preserving bin to collect fertilized eggs in the area.</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Egg Collector</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/collecteggs</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/collecteggs" title="Click to Copy">/collecteggs</td>
                                 <td class="py-3 px-4">Forces the selected refrigerator or preserving bin to collect dropped eggs in the area.</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Poop Collector</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/collectpoop</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/collectpoop" title="Click to Copy">/collectpoop</td>
                                 <td class="py-3 px-4">Forces the selected Storage Box or Vault to collect poop in the area.</td>
                             </tr>
                             <tr>
                                 <td class="py-3 px-4">Pellet Collector</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono">/collectpellets</td>
+                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/collectpellets" title="Click to Copy">/collectpellets</td>
                                 <td class="py-3 px-4">Forces the selected Storage Box or Vault to collect owl pellets in the area.</td>
                             </tr>
                         </tbody>
@@ -1657,10 +1822,10 @@
 
             <!-- Server List Section -->
             <article id="ServerList" class="mb-8">
-                <h2 class="text-4xl font-bold text-white mb-6 border-b-2 border-blue-500 pb-2">Server List</h2>
+                <h2 class="font-bold text-white mb-6 border-b-2 border-blue-500 pb-2">Server List</h2>
 
                 <div class="text-center">
-                    <h3 class="text-3xl font-semibold text-white mb-3">ARK Survival Evolved</h3>
+                    <h3 class="font-semibold text-white mb-3">ARK Survival Evolved</h3>
                     <p class="text-gray-300 mb-4">
                         1. Launch Ark Survival Evolved and click "Join Game" from the main menu.<br>
                         2. Click the "Unofficial" tab at the bottom.<br>
@@ -1669,7 +1834,7 @@
                 </div>
 
                 <div class="text-center mb-8">
-                    <h3 class="text-3xl font-semibold text-white mb-3">ARK Ascended Servers</h3>
+                    <h3 class="font-semibold text-white mb-3">ARK Ascended Servers</h3>
                     <p class="text-gray-300 mb-4">
                         1. Launch Ark Survival Ascended and click "Join Game" from the main menu.<br>
                         2. Click the "Unofficial" text at the top.<br>
@@ -1680,7 +1845,7 @@
                 </div>
 
                 <div class="text-center mb-8">
-                    <h3 class="text-3xl font-semibold text-white mb-3">Palworld</h3>
+                    <h3 class="font-semibold text-white mb-3">Palworld</h3>
                     <p class="text-gray-300 mb-4">
                         1. Launch Palworld and click "Join Multiplayer Game".<br>
                         2. Then, in the field beneath the server list, enter the server address.
@@ -1695,7 +1860,7 @@
 
             <!-- Contact Section -->
             <article id="Contact" class="mb-8">
-                <h2 class="text-4xl font-bold text-white mb-6 border-b-2 border-blue-500 pb-2">Contact</h2>
+                <h2 class="font-bold text-white mb-6 border-b-2 border-blue-500 pb-2">Contact</h2>
                 <section class="flex flex-col items-center space-y-4">
                     <a href="https://discord.com/channels/1173090690582970398/1325252710685085727" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors duration-300 shadow-md transform hover:scale-105 inline-block">Click here to contact us on Discord</a>
                 </section>
@@ -1910,9 +2075,14 @@
             const copyText = document.getElementById(inputId);
             const button = document.getElementById(buttonId);
 
+            // Create a temporary input element to hold the text to copy
+            const tempInput = document.createElement('input');
+            tempInput.value = copyText.value;
+            document.body.appendChild(tempInput);
+
             // Select the text field
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); // For mobile devices
+            tempInput.select();
+            tempInput.setSelectionRange(0, 99999); // For mobile devices
 
             try {
                 // Copy the text inside the text field
@@ -1926,6 +2096,9 @@
                 } catch (err) {
                 console.error("Failed to copy text: ", err);
                 showMessageBox("Failed to copy text. Please copy manually.", 'error');
+            } finally {
+                // Remove the temporary input element
+                document.body.removeChild(tempInput);
             }
         }
 
@@ -1946,7 +2119,9 @@
                 for (let j = 0; j < td.length; j++) {
                     const cell = td[j];
                     if (cell) {
-                        if (cell.textContent.toLowerCase().indexOf(filter) > -1) {
+                        // Check if the cell text content (excluding italicized parts) matches the filter
+                        const cellText = cell.textContent.split('(')[0].trim().toLowerCase();
+                        if (cellText.indexOf(filter) > -1) {
                             rowMatches = true;
                             break; // No need to check other cells in this row
                         }
@@ -1957,6 +2132,37 @@
                 } else {
                     tr[i].style.display = "none";
                 }
+            }
+        }
+
+        /**
+         * Copies the command text from a clicked table cell.
+         * @param {Event} event - The click event object.
+         */
+        function copyCommand(event) {
+            const clickedCell = event.currentTarget;
+            const commandText = clickedCell.getAttribute('data-command');
+
+            // Create a temporary input element to copy the text
+            const tempInput = document.createElement('input');
+            tempInput.value = commandText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            tempInput.setSelectionRange(0, 99999); // For mobile devices
+
+            try {
+                document.execCommand('copy');
+                showMessageBox(`Copied: ${commandText}`, 'success');
+                const originalText = clickedCell.innerHTML; // Store original HTML
+                clickedCell.innerHTML = 'Copied!'; // Change text temporarily
+                setTimeout(() => {
+                    clickedCell.innerHTML = originalText; // Revert after 2 seconds
+                }, 2000);
+            } catch (err) {
+                console.error("Failed to copy command: ", err);
+                showMessageBox("Failed to copy command. Please copy manually.", 'error');
+            } finally {
+                document.body.removeChild(tempInput); // Clean up temp input
             }
         }
 
@@ -2001,6 +2207,11 @@
             if (initialTabButton) {
                 initialTabButton.click();
             }
+
+            // Add click event listeners to all command cells
+            document.querySelectorAll('.command-cell').forEach(cell => {
+                cell.addEventListener('click', copyCommand);
+            });
         });
     </script>
 </body>
