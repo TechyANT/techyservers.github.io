@@ -160,37 +160,14 @@
             }
         }
 
-        /* Shine animation for the H1 title - REMOVED for this request */
-        /* .technical-title::after {
-            content: '';
-            position: absolute;
-            top: -20%;
-            left: -200%;
-            width: 300%;
-            height: 140%;
-            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.05) 70%, rgba(255,255,255,0) 100%);
-            transform: skewX(-20deg);
-            animation: text-shine 3s infinite ease-in-out;
-        }
-
-        @keyframes text-shine {
-            0% {
-                left: -200%;
-            }
-            100% {
-                left: 200%;
-            }
-        } */
-
         /* Slogan styling with more prominent glow and white text */
         .slogan-text {
             font-weight: 700; /* Make it bolder */
             color: #ffffff; /* Explicitly set to white */
             text-shadow:
-                0 0 5px #3b82f6, /* Blue glow, aligned with title's color */
-                0 0 10px #3b82f6,
-                0 0 15px #3b82f6;
-            animation: pulse-slogan 4s infinite ease-in-out; /* Keep pulse animation */
+                0 0 8px #3b82f6, /* Stronger blue glow */
+                0 0 15px #3b82f6,
+                0 0 20px #3b82f6;
         }
         /* Responsive font size for slogan */
         .slogan-text {
@@ -204,15 +181,6 @@
         @media (min-width: 768px) { /* md breakpoint */
             .slogan-text {
                 font-size: 1.125rem; /* text-lg */
-            }
-        }
-
-        @keyframes pulse-slogan {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.8;
             }
         }
 
@@ -320,7 +288,7 @@
 
         /* Styling for the cooler navigation buttons (updated for responsiveness) */
         .nav-button {
-            padding: 0.3rem 0.6rem; /* Smaller padding for mobile */
+            padding: 0.3rem 0.6rem; /* Default smaller padding for mobile */
             font-weight: bold;
             color: #e2e8f0; /* Light gray text */
             border-radius: 0.4rem;
@@ -331,7 +299,7 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Softer shadow */
             transition: all 0.2s ease-in-out; /* Smooth transition */
             display: inline-block;
-            font-size: 0.75rem; /* Smaller font size for mobile */
+            font-size: 0.75rem; /* Default smaller font size for mobile */
         }
 
         @media (min-width: 640px) { /* sm breakpoint */
@@ -342,8 +310,9 @@
         }
         @media (min-width: 768px) { /* md breakpoint */
             .nav-button {
-                padding: 0.6rem 1.2rem; /* Larger padding for desktop */
-                font-size: 0.9rem; /* Larger font size for desktop */
+                /* Slightly reduced font size for desktop to address user feedback */
+                padding: 0.6rem 1.2rem;
+                font-size: 0.875rem; /* text-sm in Tailwind */
             }
         }
 
@@ -417,6 +386,26 @@
         @media (min-width: 768px) { /* md breakpoint */
             h4 {
                 font-size: 1.75rem;
+            }
+        }
+
+        /* Responsive adjustments for tablinks (buttons for game rates) */
+        .tablinks {
+            /* Existing Tailwind classes for default and sm: are in the HTML,
+               but we're adding a specific md: override here for font-size. */
+            font-size: 0.875rem; /* text-sm default from HTML */
+            padding: 0.5rem 1rem; /* Adjusting default padding slightly */
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .tablinks {
+                font-size: 1rem; /* text-base for sm */
+                padding: 0.625rem 1.25rem; /* py-2.5 px-5 */
+            }
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .tablinks {
+                font-size: 1.125rem; /* text-lg for md */
+                padding: 0.75rem 1.5rem; /* py-3 px-6 */
             }
         }
 
@@ -498,10 +487,11 @@
     <div id="video-background">
         <video
             id="background-video-player"
-            src="https://github.com/TechyANT/techyservers.github.io/raw/refs/heads/main/Music/ARK - Aberration Theme.mp4"
+            src="https://github.com/TechyANT/techyservers.github.io/raw/refs/heads/main/Music/ARK%20-%20Aberration%20Theme.mp4"
             preload="auto"
             muted
             playsinline
+            loop
         ></video>
     </div>
 
@@ -543,10 +533,10 @@
 
                 <!-- Tab Buttons (ARK Evolved first) -->
                 <div class="tab flex flex-wrap justify-center sm:justify-start border-b border-gray-700">
-                    <button class="tablinks bg-gray-700 text-gray-200 px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'Evolved')">ARK Evolved</button>
-                    <button class="tablinks bg-gray-700 text-gray-200 px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'Ascended')">ARK Ascended</button>
-                    <button class="tablinks bg-gray-700 text-gray-200 px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'PrimalFear')">ARK Primal Fear</button>
-                    <button class="tablinks bg-gray-700 text-gray-200 px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'Palworld')">Palworld</button>
+                    <button class="tablinks bg-gray-700 text-gray-200 px-4 py-2 text-sm sm:px-5 sm:py-2.5 sm:text-base md:px-6 md:py-3 md:text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'Evolved')">ARK Evolved</button>
+                    <button class="tablinks bg-gray-700 text-gray-200 px-4 py-2 text-sm sm:px-5 sm:py-2.5 sm:text-base md:px-6 md:py-3 md:text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'Ascended')">ARK Ascended</button>
+                    <button class="tablinks bg-gray-700 text-gray-200 px-4 py-2 text-sm sm:px-5 sm:py-2.5 sm:text-base md:px-6 md:py-3 md:text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'PrimalFear')">ARK Primal Fear</button>
+                    <button class="tablinks bg-gray-700 text-gray-200 px-4 py-2 text-sm sm:px-5 sm:py-2.5 sm:text-base md:px-6 md:py-3 md:text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'Palworld')">Palworld</button>
                 </div>
 
                 <!-- Tab Content: ARK Evolved (now first) -->
@@ -563,12 +553,12 @@
                         <li>Structure decay time: <span class="font-bold">12d</span> thatch, <span class="font-bold">24d</span> wood, <span class="font-bold">24d</span> adobe, <span class="font-bold">36d</span> stone, <span class="font-bold">48d</span> metal, <span class="font-bold">60d</span> Tek</li>
                     </ul>
                     <h4 class="font-bold text-white mt-6 mb-3">Plugins:</h4>
-                    <ul class="list-disc list-inside space-y-2 text-gray-300">
-                        <li><a href="https://gameservershub.com/forums/resources/all-engrams.14/" target="_blank" class="text-blue-400 hover:underline">All Engrams</a></li>
-                        <li><a href="https://gameservershub.com/forums/resources/dino-utilities-free.270/" target="_blank" class="text-blue-400 hover:underline">Dino Utilities (Free)</a></li>
-                        <li><a href="https://gameservershub.com/forums/resources/enhanced-hlna.268/" target="_blank" class="text-blue-400 hover:underline">Enhanced HLNA</a></li>
-                        <li><a href="https://gameservershub.com/forums/resources/item-collector-free.565/" target="_blank" class="text-blue-400 hover:underline">Item Collector (Free)</a></li>
-                        <li><a href="https://gameservershub.com/forums/resources/structure-utilities-pro.630/" target="_blank" class="text-blue-400 hover:underline">Structure Utilities Pro</a></li>
+                    <ul class="list-disc list-inside space-y-2 text-blue-400">
+                        <li><a href="https://gameservershub.com/forums/resources/all-engrams.14/" target="_blank" class="hover:underline">All Engrams</a></li>
+                        <li><a href="https://gameservershub.com/forums/resources/dino-utilities-free.270/" target="_blank" class="hover:underline">Dino Utilities (Free)</a></li>
+                        <li><a href="https://gameservershub.com/forums/resources/enhanced-hlna.268/" target="_blank" class="hover:underline">Enhanced HLNA</a></li>
+                        <li><a href="https://gameservershub.com/forums/resources/item-collector-free.565/" target="_blank" class="hover:underline">Item Collector (Free)</a></li>
+                        <li><a href="https://gameservershub.com/forums/resources/structure-utilities-pro.630/" target="_blank" class="hover:underline">Structure Utilities Pro</a></li>
                     </ul>
                 </div>
 
@@ -585,16 +575,16 @@
                         <li><span class="font-bold">24/7</span> Server uptime</li>
                     </ul>
                     <h4 class="font-bold text-white mt-6 mb-3">Mods</h4>
-                    <ul class="list-disc list-inside space-y-2 text-gray-300">
-                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/automated-ark" target="_blank" class="text-blue-400 hover:underline">Automated ARK</a></li>
-                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/awesomespyglass" target="_blank" class="text-blue-400 hover:underline">Awesome Spyglass</a></li>
-                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/ez-engram-unlocker" target="_blank" class="text-blue-400 hover:underline">EZ Engram Unlocker</a></li>
-                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/death-inventory-keeper" target="_blank" class="text-blue-400 hover:underline">Death Inventory Keeper (does not keep artifacts or fertilized eggs)</a></li>
-                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/resource-gatherers" target="_blank" class="text-blue-400 hover:underline">Resource Gatherers</a></li>
-                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/tranqz" target="_blank" class="text-blue-400 hover:underline">Tranqz+</a></li>
-                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/awesometeleporters" target="_blank" class="text-blue-400 hover:underline">Awesome Teleporters</a></li>
-                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/super-cryo-storage" target="_blank" class="text-blue-400 hover:underline">Super Cryo Storage (Dinos raise and imprint in fridges while offline; resources also produce)</a></li>
-                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/custom-dino-levels" target="_blank" class="text-blue-400 hover:underline">Custom Dino Levels (Improved dino levels; max level 200)</a></li>
+                    <ul class="list-disc list-inside space-y-2 text-blue-400">
+                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/automated-ark" target="_blank" class="hover:underline">Automated ARK</a></li>
+                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/awesomespyglass" target="_blank" class="hover:underline">Awesome Spyglass</a></li>
+                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/ez-engram-unlocker" target="_blank" class="hover:underline">EZ Engram Unlocker</a></li>
+                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/death-inventory-keeper" target="_blank" class="hover:underline">Death Inventory Keeper (does not keep artifacts or fertilized eggs)</a></li>
+                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/resource-gatherers" target="_blank" class="hover:underline">Resource Gatherers</a></li>
+                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/tranqz" target="_blank" class="hover:underline">Tranqz+</a></li>
+                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/awesometeleporters" target="_blank" class="hover:underline">Awesome Teleporters</a></li>
+                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/super-cryo-storage" target="_blank" class="hover:underline">Super Cryo Storage (Dinos raise and imprint in fridges while offline; resources also produce)</a></li>
+                        <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/custom-dino-levels" target="_blank" class="hover:underline">Custom Dino Levels (Improved dino levels; max level 200)</a></li>
                     </ul>
                 </div>
 
@@ -1670,91 +1660,6 @@
                                 <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy xyuty" title="Click to Copy">/buy xyuty</td>
                             </tr>
                             <!-- More dino entries can be added here following the same structure -->
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3 class="font-bold text-white mt-8 mb-3">General Commands</h3>
-                <div class="overflow-x-auto rounded-lg shadow-lg">
-                    <table class="min-w-full">
-                        <thead>
-                            <tr>
-                                <th class="py-3 px-4 uppercase font-semibold text-sm text-gray-100 bg-gray-600 rounded-tl-lg">Name</th>
-                                <th class="py-3 px-4 uppercase font-semibold text-sm text-gray-100 bg-gray-600">Points</th>
-                                <th class="py-3 px-4 uppercase font-semibold text-sm text-gray-100 bg-gray-600 rounded-tr-lg">Command</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-gray-700 divide-y divide-gray-600">
-                            <tr>
-                                <td class="py-3 px-4">Dino Change Gender</td>
-                                <td class="py-3 px-4">100</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/cg" title="Click to Copy">/cg</td>
-                            </tr>
-                            <tr>
-                                <td class="py-3 px-4">Shop</td>
-                                <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/shop" title="Click to Copy">/shop</td>
-                            </tr>
-                            <tr>
-                                <td class="py-3 px-4">Points</td>
-                                <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/points" title="Click to Copy">/points <span class="text-gray-400 text-sm italic">(shows your current points)</span></td>
-                            </tr>
-                            <tr>
-                                <td class="py-3 px-4">Dino Claim Babies</td>
-                                <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/claimbabies" title="Click to Copy">/claimbabies</td>
-                            </tr>
-                            <tr>
-                                <td class="py-3 px-4">Retrieve body on death</td>
-                                <td class="py-3 px-4">20</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/getbody 1" title="Click to Copy">/getbody 1</td>
-                            </tr>
-                            <tr>
-                                <td class="py-3 px-4">Show bodies on death</td>
-                                <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/bodies" title="Click to Copy">/bodies</td>
-                            </tr>
-                            <tr>
-                                <td class="py-3 px-4">Dino Fast Pod (Range)</td>
-                                <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/pods" title="Click to Copy">/pods <span class="text-gray-400 text-sm italic">(example: /pods giga)</span></td>
-                            </tr>
-                            <tr>
-                                <td class="py-3 px-4">Dino Fast Pod (Single)</td>
-                                <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/pod" title="Click to Copy">/pod</td>
-                            </tr>
-                            <tr>
-                                <td class="py-3 px-4">Dino Imprint</td>
-                                <td class="py-3 px-4">100</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/imprint" title="Click to Copy">/imprint <span class="text-gray-400 text-sm italic">(imprints Dino to 100%)</span></td>
-                            </tr>
-                            <tr>
-                                <td class="py-3 px-4">Dino Kill</td>
-                                <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/dkill" title="Click to Copy">/dkill <span class="text-gray-400 text-sm italic">(kills the dino you are looking at)</span></td>
-                            </tr>
-                            <tr>
-                                <td class="py-3 px-4">Dino No Mate</td>
-                                <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/nomatedinos" title="Click to Copy">/nomatedinos <span class="text-gray-400 text-sm italic">(disables mating in the area)</span></td>
-                            </tr>
-                            <tr>
-                                <td class="py-3 px-4">Dino Rename Range</td>
-                                <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/renamedinos" title="Click to Copy">/renamedinos</td>
-                            </tr>
-                            <tr>
-                                <td class="py-3 px-4">Dino Wake</td>
-                                <td class="py-3 px-4">0</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/wake" title="Click to Copy">/wake</td>
-                            </tr>
-                            <tr>
-                                <td class="py-3 px-4">Dino Reset Mating</td>
-                                <td class="py-3 px-4">150</td>
-                                <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/resetmating" title="Click to Copy">/resetmating</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
