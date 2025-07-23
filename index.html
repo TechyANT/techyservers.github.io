@@ -165,9 +165,9 @@
             font-weight: 700; /* Make it bolder */
             color: #ffffff; /* Explicitly set to white */
             text-shadow:
-                0 0 8px #3b82f6, /* Stronger blue glow */
-                0 0 15px #3b82f6,
-                0 0 20px #3b82f6;
+                0 0 5px #3b82f6, /* Stronger blue glow */
+                0 0 10px #3b82f6,
+                0 0 15px #3b82f6;
         }
         /* Responsive font size for slogan */
         .slogan-text {
@@ -326,8 +326,8 @@
 
         /* Styling for the original logo image */
         .techy-logo {
-            width: 70px; /* Smaller default for mobile (was 80px) */
-            height: 70px; /* Smaller default for mobile (was 80px) */
+            width: 60px; /* Even smaller default for mobile (was 70px) */
+            height: 60px; /* Even smaller default for mobile (was 70px) */
             border-radius: 50%; /* Make it a circle */
             margin-right: 0.75rem; /* Space between logo and text */
             object-fit: cover; /* Ensure image covers the circular area */
@@ -335,15 +335,15 @@
         }
         @media (min-width: 640px) { /* sm breakpoint */
             .techy-logo {
-                width: 80px; /* Smaller for sm (was 90px) */
-                height: 80px; /* Smaller for sm (was 90px) */
+                width: 70px; /* Smaller for sm (was 80px) */
+                height: 70px; /* Smaller for sm (was 80px) */
                 margin-right: 1rem;
             }
         }
         @media (min-width: 768px) { /* md breakpoint */
             .techy-logo {
-                width: 90px; /* Smaller for md (was 100px) */
-                height: 90px; /* Smaller for md (was 100px) */
+                width: 80px; /* Smaller for md (was 90px) */
+                height: 80px; /* Smaller for md (was 100px) */
             }
         }
 
@@ -496,20 +496,20 @@
     <div id="wrapper" class="min-h-screen flex flex-col">
 
         <!-- Header -->
-        <header id="header" class="bg-gray-800 py-4 px-4 sm:px-6 flex flex-col md:flex-row items-center md:justify-start rounded-b-xl shadow-lg sticky top-0 w-full z-50">
+        <header id="header" class="bg-gray-800 py-3 px-4 sm:px-6 flex flex-col md:flex-row items-center md:justify-start rounded-b-xl shadow-lg sticky top-0 w-full z-50">
             <!-- Left-aligned Branding Block (Logo + Title/Slogan) -->
-            <div class="flex items-center mb-4 md:mb-0 md:mr-8">
+            <div class="flex items-center mb-2 md:mb-0 md:mr-8"> <!-- Reduced mb-4 to mb-2 -->
                 <img src="https://techyservers.com/TS%20logo.png" alt="TechyServers Logo" width="100" height="100" class="techy-logo mr-4">
                 <div class="content text-left"> <!-- text-left ensures title and slogan align to left -->
                     <div class="inner">
-                        <h1 class="font-extrabold text-white mb-2 tracking-wide technical-title">TechyServers</h1>
-                        <p class="text-gray-400 slogan-text">Unleash Your Game. Powered by Precision. Crafted for Community.</p>
+                        <h1 class="font-extrabold text-white mb-1 tracking-wide technical-title">TechyServers</h1> <!-- Reduced mb-2 to mb-1 -->
+                        <p class="slogan-text">Unleash Your Game. Powered by Precision. Crafted for Community.</p>
                     </div>
                 </div>
             </div>
             <!-- Navigation Block - pushed to the right on desktop -->
-            <nav class="mt-6 md:mt-0 ml-auto w-full md:w-auto">
-                <ul class="flex flex-wrap justify-center md:justify-start gap-1 sm:gap-2"> <!-- Reduced gap -->
+            <nav class="mt-4 md:mt-0 ml-auto w-full md:w-auto"> <!-- Reduced mt-6 to mt-4 -->
+                <ul class="flex flex-wrap justify-center md:justify-start gap-1 sm:gap-2">
                     <li><a href="#main" class="nav-button">Home</a></li>
                     <li><a href="#Rates" class="nav-button">Rates</a></li>
                     <li><a href="https://discord.gg/mE7f3K7CTm" target="_blank" class="nav-button">Discord</a></li>
