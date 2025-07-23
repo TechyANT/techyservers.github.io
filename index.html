@@ -388,25 +388,6 @@
             }
         }
 
-        /* Responsive adjustments for tablinks (buttons for game rates) */
-        .tablinks {
-            font-size: 0.875rem; /* text-sm default from HTML */
-            padding: 0.5rem 1rem; /* Adjusting default padding slightly */
-        }
-        @media (min-width: 640px) { /* sm breakpoint */
-            .tablinks {
-                font-size: 1rem; /* text-base for sm */
-                padding: 0.625rem 1.25rem; /* py-2.5 px-5 */
-            }
-        }
-        @media (min-width: 768px) { /* md breakpoint */
-            .tablinks {
-                font-size: 1.125rem; /* text-lg for md */
-                padding: 0.75rem 1.5rem; /* py-3 px-6 */
-            }
-        }
-
-
         /* Modal styling */
         .modal {
             display: none; /* Hidden by default */
@@ -530,10 +511,11 @@
 
                 <!-- Tab Buttons (ARK Evolved first) -->
                 <div class="tab flex flex-wrap justify-center sm:justify-start border-b border-gray-700">
-                    <button class="tablinks bg-gray-700 text-gray-200 px-4 py-2 text-sm sm:px-5 sm:py-2.5 sm:text-base md:px-6 md:py-3 md:text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'Evolved')">ARK Evolved</button>
-                    <button class="tablinks bg-gray-700 text-gray-200 px-4 py-2 text-sm sm:px-5 sm:py-2.5 sm:text-base md:px-6 md:py-3 md:text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'Ascended')">ARK Ascended</button>
-                    <button class="tablinks bg-gray-700 text-gray-200 px-4 py-2 text-sm sm:px-5 sm:py-2.5 sm:text-base md:px-6 md:py-3 md:text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'PrimalFear')">ARK Primal Fear</button>
-                    <button class="tablinks bg-gray-700 text-gray-200 px-4 py-2 text-sm sm:px-5 sm:py-2.5 sm:text-base md:px-6 md:py-3 md:text-lg font-semibold rounded-t-lg hover:bg-gray-600 transition-colors duration-300 focus:outline-none flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'Palworld')">Palworld</button>
+                    <button class="tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'Evolved')">ARK Evolved</button>
+                    <button class="tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'Ascended')">ARK Ascended</button>
+                    <button class="tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'PrimalFear')">ARK Primal Fear</button>
+                    <button class="tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'Palworld')">Palworld</button>
+                    <button class="tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'ConanExiles')">Conan Exiles</button>
                 </div>
 
                 <!-- Tab Content: ARK Evolved (now first) -->
@@ -604,6 +586,12 @@
                         <li>Work Speed Rate: <span class="font-bold">5.0</span></li>
                         <li>Auto Reset Guild Time (No Online Players): <span class="font-bold">0</span> (No server wipes currently; join Discord for news on wipes)</li>
                     </ul>
+                </div>
+
+                <!-- Tab Content: Conan Exiles (New Tab) -->
+                <div id="ConanExiles" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
+                    <h3 class="font-semibold text-white mb-4">Conan Exiles Rates</h3>
+                    <p class="text-gray-300">Coming soon!</p>
                 </div>
             </article>
 
@@ -1935,15 +1923,17 @@
             // Get all elements with class="tablinks" and remove the "active" class
             const tablinks = document.getElementsByClassName("tablinks");
             for (let i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active", "bg-blue-600", "text-white"); // Remove active classes
-                tablinks[i].classList.add("bg-gray-700", "text-gray-200"); // Reapply default styling
+                // Remove the active styling (bg-blue-600, text-white)
+                tablinks[i].classList.remove("bg-blue-600", "text-white");
+                // Add back the default styling of nav-button
+                tablinks[i].classList.add("bg-gray-700", "text-gray-200"); // Assuming gray-700 is the default background for non-active nav-buttons
             }
 
             // Show the specific tab content
             document.getElementById(tabName).style.display = "block";
 
-            // Add the "active" class to the button that opened the tab
-            evt.currentTarget.classList.add("active", "bg-blue-600", "text-white"); // Add active classes
+            // Add the "active" styling to the clicked button
+            evt.currentTarget.classList.add("bg-blue-600", "text-white");
             evt.currentTarget.classList.remove("bg-gray-700", "text-gray-200"); // Remove default styling
         }
 
