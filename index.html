@@ -349,42 +349,42 @@
 
         /* Responsive font sizes for section headings */
         h2 {
-            font-size: 1.75rem; /* Reduced from 2rem for mobile */
+            font-size: 1.5rem; /* Further reduced from 1.75rem for mobile */
         }
         @media (min-width: 640px) { /* sm breakpoint */
             h2 {
-                font-size: 2.25rem; /* Reduced from 2.5rem for sm */
+                font-size: 1.8rem; /* Further reduced from 2.25rem for sm */
             }
         }
         @media (min-width: 768px) { /* md breakpoint */
             h2 {
-                font-size: 2.75rem; /* Reduced from 3rem for md */
+                font-size: 2.2rem; /* Further reduced from 2.75rem for md */
             }
         }
         h3 {
-            font-size: 1.5rem; /* Default for mobile */
+            font-size: 1.1rem; /* Further reduced from 1.25rem for mobile */
         }
         @media (min-width: 640px) { /* sm breakpoint */
             h3 {
-                font-size: 1.75rem;
+                font-size: 1.3rem; /* Further reduced from 1.5rem for sm */
             }
         }
         @media (min-width: 768px) { /* md breakpoint */
             h3 {
-                font-size: 2rem;
+                font-size: 1.5rem; /* Further reduced from 1.75rem for md */
             }
         }
         h4 {
-            font-size: 1.25rem; /* Default for mobile */
+            font-size: 1rem; /* Further reduced from 1.1rem for mobile */
         }
         @media (min-width: 640px) { /* sm breakpoint */
             h4 {
-                font-size: 1.5rem;
+                font-size: 1.15rem; /* Further reduced from 1.25rem for sm */
             }
         }
         @media (min-width: 768px) { /* md breakpoint */
             h4 {
-                font-size: 1.75rem;
+                font-size: 1.3rem; /* Further reduced from 1.5rem for md */
             }
         }
 
@@ -601,8 +601,9 @@
 
                 <!-- Tab Buttons for Shop Commands -->
                 <div class="tab flex flex-wrap justify-center sm:justify-start border-b border-gray-700">
-                    <button class="command-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openCommandTab(event, 'ArkEvolvedCommands')">ARK Survival Evolved Commands</button>
-                    <button class="command-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openCommandTab(event, 'ArkPrimalFearCommands')">ARK Primal Fear Evolved Commands</button>
+                    <button class="command-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openCommandTab(event, 'ArkEvolvedCommands')">ARK SURVIVAL EVOLVED (ASE)</button>
+                    <button class="command-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openCommandTab(event, 'ArkPrimalFearCommands')">ARK PRIMAL FEAR EVOLVED (ASE)</button>
+                    <button class="command-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openCommandTab(event, 'ArkAscendedCommands')">ARK SURVIVAL ASCENDED</button>
                 </div>
 
                 <!-- Tab Content: ARK Survival Evolved Commands -->
@@ -1351,7 +1352,6 @@
                                     <td class="py-3 px-4">900</td>
                                     <td class="py-3 px-4">Free</td>
                                     <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/buy ovis" title="Click to Copy">/buy ovis</td>
-                                </tr>
                                 <tr>
                                     <td class="py-3 px-4">Ab Ovis</td>
                                     <td class="py-3 px-4">900</td>
@@ -1723,13 +1723,27 @@
                     <h3 class="font-semibold text-white mb-4">ARK Primal Fear Evolved Commands</h3>
                     <p class="text-gray-300">Coming soon!</p>
                 </div>
+
+                <!-- Tab Content: ARK Survival Ascended Commands -->
+                <div id="ArkAscendedCommands" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
+                    <h3 class="font-semibold text-white mb-4">ARK Survival Ascended Commands</h3>
+                    <p class="text-gray-300">Coming soon!</p>
+                </div>
             </article>
 
             <!-- Server List Section -->
             <article id="ServerList" class="mb-8">
                 <h2 class="font-bold text-white mb-6 border-b-2 border-blue-500 pb-2">Server List</h2>
 
-                <div class="text-center">
+                <!-- Tab Buttons for Server List -->
+                <div class="tab flex flex-wrap justify-center sm:justify-start border-b border-gray-700">
+                    <button class="server-list-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openServerListTab(event, 'ArkEvolvedServer')">ARK Survival Evolved</button>
+                    <button class="server-list-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openServerListTab(event, 'ArkAscendedServer')">ARK Ascended Servers</button>
+                    <button class="server-list-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openServerListTab(event, 'PalworldServer')">Palworld</button>
+                </div>
+
+                <!-- Tab Content: ARK Survival Evolved Server -->
+                <div id="ArkEvolvedServer" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
                     <h3 class="font-semibold text-white mb-3">ARK Survival Evolved</h3>
                     <p class="text-gray-300 mb-4">
                         1. Launch Ark Survival Evolved and click "Join Game" from the main menu.<br>
@@ -1738,7 +1752,8 @@
                     </p>
                 </div>
 
-                <div class="text-center mb-8">
+                <!-- Tab Content: ARK Ascended Servers -->
+                <div id="ArkAscendedServer" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
                     <h3 class="font-semibold text-white mb-3">ARK Ascended Servers</h3>
                     <p class="text-gray-300 mb-4">
                         1. Launch Ark Survival Ascended and click "Join Game" from the main menu.<br>
@@ -1749,7 +1764,8 @@
                     <img src="https://i.imgur.com/IQiWsxf.png" alt="ARK Ascended Server List Example" class="mx-auto rounded-lg shadow-md mt-4 w-full md:max-w-md">
                 </div>
 
-                <div class="text-center mb-8">
+                <!-- Tab Content: Palworld Server -->
+                <div id="PalworldServer" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
                     <h3 class="font-semibold text-white mb-3">Palworld</h3>
                     <p class="text-gray-300 mb-4">
                         1. Launch Palworld and click "Join Multiplayer Game".<br>
@@ -1757,7 +1773,7 @@
                     </p>
                     <div class="flex flex-col items-center space-y-4">
                         <input type="text" value="palworld.techyservers.com:8211" id="palworldInput" readonly class="bg-gray-700 border border-gray-600 rounded-lg py-2 px-4 text-gray-200 w-full max-w-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <button id="copyPalworldButton" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-300 shadow-md">Click to Copy</button>
+                        <button id="copyPalworldButton" class="nav-button">Click to Copy</button>
                     </div>
                     <p class="text-gray-300 mt-4">3. Lastly, select the "Connect" button.</p>
                 </div>
@@ -1989,6 +2005,35 @@
             }
         }
 
+        /**
+         * Handles the tab switching functionality for the "Server List" section.
+         * Hides all tab content and deactivates all tab buttons,
+         * then shows the selected tab content and activates its button.
+         * @param {Event} evt - The click event.
+         * @param {string} tabName - The ID of the tab content to display.
+         */
+        function openServerListTab(evt, tabName) {
+            // Get all elements with class="tabcontent" within the server list section and hide them
+            const tabcontent = document.getElementById('ServerList').getElementsByClassName("tabcontent");
+            for (let i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="server-list-tablinks" within the server list section and remove the "active" class
+            const tablinks = document.getElementById('ServerList').getElementsByClassName("server-list-tablinks");
+            for (let i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("bg-blue-600", "text-white");
+                tablinks[i].classList.add("bg-gray-700", "text-gray-200");
+            }
+
+            // Show the specific tab content
+            document.getElementById(tabName).style.display = "block";
+
+            // Add the "active" styling to the clicked button
+            evt.currentTarget.classList.add("bg-blue-600", "text-white");
+            evt.currentTarget.classList.remove("bg-gray-700", "text-gray-200");
+        }
+
 
         /**
          * Displays a temporary message box at the bottom of the screen.
@@ -2164,6 +2209,12 @@
             const initialCommandsTabButton = document.querySelector('#commands .command-tablinks');
             if (initialCommandsTabButton) {
                 initialCommandsTabButton.click();
+            }
+
+            // Initialize the first tab (ARK Survival Evolved) in the "Server List" section to be open by default
+            const initialServerListTabButton = document.querySelector('#ServerList .server-list-tablinks');
+            if (initialServerListTabButton) {
+                initialServerListTabButton.click();
             }
 
             // Add click event listeners to all command cells
