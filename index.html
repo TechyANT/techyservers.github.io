@@ -467,6 +467,40 @@
             opacity: 0;
             visibility: hidden;
         }
+
+        /* Styling for the server join buttons */
+        .join-server-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            margin: 0.5rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            color: white;
+            background-color: #1e3a8a; /* Darker blue for Steam-like feel */
+            border: 2px solid #3b82f6;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            text-decoration: none; /* Remove underline for anchor tags */
+            text-align: center;
+        }
+
+        .join-server-button:hover {
+            background-color: #2563eb; /* Blue-700 on hover */
+            border-color: #60a5fa;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .join-server-button img {
+            margin-right: 0.5rem;
+            width: 1.5rem; /* 24px */
+            height: 1.5rem; /* 24px */
+            border-radius: 0.25rem; /* Slightly rounded corners for the images */
+            object-fit: contain; /* Ensure the entire logo is visible */
+        }
     </style>
 </head>
 <body class="is-preload bg-gray-900 text-gray-200" oncontextmenu="return false;">
@@ -1748,44 +1782,189 @@
                 <!-- Tab Buttons for Server List -->
                 <div class="tab flex flex-wrap justify-center sm:justify-start border-b border-gray-700">
                     <button class="server-list-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openServerListTab(event, 'ArkEvolvedServer')">ARK Survival Evolved</button>
-                    <button class="server-list-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openServerListTab(event, 'ArkAscendedServer')">ARK Ascended Servers</button>
+                    <button class="server-list-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openServerListTab(event, 'ArkPrimalFearServer')">ARK Primal Fear</button>
+                    <button class="server-list-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openServerListTab(event, 'ArkAscendedServer')">ARK Ascended</button>
                     <button class="server-list-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openServerListTab(event, 'PalworldServer')">Palworld</button>
                 </div>
 
                 <!-- Tab Content: ARK Survival Evolved Server -->
                 <div id="ArkEvolvedServer" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
-                    <h3 class="font-semibold text-white mb-3">ARK Survival Evolved</h3>
-                    <p class="text-gray-300 mb-4">
-                        1. Launch Ark Survival Evolved and click "Join Game" from the main menu.<br>
-                        2. Click the "Unofficial" tab at the bottom.<br>
-                        3. Search for "techy".
+                    <h3 class="font-semibold text-white mb-3">Join an ARK Survival Evolved Server:</h3>
+                    <p class="text-gray-300 mb-4">Click a map below to attempt to join the server via Steam. Ensure Steam and ARK are running.</p>
+
+                    <div class="flex flex-wrap justify-center gap-4 mt-6">
+                        <!-- Existing ARK Survival Evolved buttons -->
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_ISLAND_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASE" alt="ARK Survival Evolved Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            The Island
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_RAGNAROK_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASE" alt="ARK Survival Evolved Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Ragnarok
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_SCORCHED_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASE" alt="ARK Survival Evolved Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Scorched Earth
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_FJORDUR_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASE" alt="ARK Survival Evolved Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Fjordur
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_GEN1_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASE" alt="ARK Survival Evolved Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Genesis Part 1
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_GEN2_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASE" alt="ARK Survival Evolved Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Genesis Part 2
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_EXTINCTION_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASE" alt="ARK Survival Evolved Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Extinction
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_ABERRATION_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASE" alt="ARK Survival Evolved Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Aberration
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_LOSTISLAND_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASE" alt="ARK Survival Evolved Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Lost Island
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_VALGUERO_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASE" alt="ARK Survival Evolved Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Valguero
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_CRYSTALISLES_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASE" alt="ARK Survival Evolved Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Crystal Isles
+                        </button>
+                    </div>
+                    <p class="text-gray-300 mt-6 text-sm">
+                        <strong>Important:</strong> You must replace `YOUR_MAP_IP:7777` with your actual server IP address and game port for each map. The default ARK game port is usually `7777`.
+                    </p>
+                </div>
+
+                <!-- New Tab Content: ARK Primal Fear Server -->
+                <div id="ArkPrimalFearServer" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
+                    <h3 class="font-semibold text-white mb-3">Join an ARK Primal Fear Server:</h3>
+                    <p class="text-gray-300 mb-4">Click a map below to attempt to join the server via Steam. Ensure Steam and ARK are running, and that you have the Primal Fear mod installed.</p>
+
+                    <div class="flex flex-wrap justify-center gap-4 mt-6">
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_ISLAND_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=PF" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            The Island
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_RAGNAROK_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=PF" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Ragnarok
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_SCORCHED_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=PF" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Scorched Earth
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_FJORDUR_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=PF" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Fjordur
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_GEN1_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=PF" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Genesis Part 1
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_GEN2_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=PF" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Genesis Part 2
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_EXTINCTION_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=PF" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Extinction
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_ABERRATION_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=PF" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Aberration
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_LOSTISLAND_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=PF" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Lost Island
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_VALGUERO_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=PF" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Valguero
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_CRYSTALISLES_IP:7777">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=PF" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Crystal Isles
+                        </button>
+                    </div>
+                    <p class="text-gray-300 mt-6 text-sm">
+                        <strong>Important:</strong> You must replace `YOUR_PRIMAL_FEAR_MAP_IP:7777` with your actual ARK Primal Fear server IP address and game port for each map. The default ARK game port is usually `7777`.
                     </p>
                 </div>
 
                 <!-- Tab Content: ARK Ascended Servers -->
                 <div id="ArkAscendedServer" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
-                    <h3 class="font-semibold text-white mb-3">ARK Ascended Servers</h3>
-                    <p class="text-gray-300 mb-4">
-                        1. Launch Ark Survival Ascended and click "Join Game" from the main menu.<br>
-                        2. Click the "Unofficial" text at the top.<br>
-                        3. Confirm you have the "Show Player Servers" box checked as shown below.<br>
-                        4. Search for "techy" and press the "Enter" key twice.
+                    <h3 class="font-semibold text-white mb-3">Join an ARK Ascended Server:</h3>
+                    <p class="text-gray-300 mb-4">Click a map below to attempt to join the server via Steam. Ensure Steam and ARK are running.</p>
+
+                    <div class="flex flex-wrap justify-center gap-4 mt-6">
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_ASA_ISLAND_IP:7410">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASA" alt="ARK Survival Ascended Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            The Island
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_ASA_SCORCHED_IP:7410">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASA" alt="ARK Survival Ascended Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Scorched Earth
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_ASA_ABERRATION_IP:7410">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASA" alt="ARK Survival Ascended Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Aberration
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_ASA_EXTINCTION_IP:7410">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASA" alt="ARK Survival Ascended Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Extinction
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_ASA_GEN1_IP:7410">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASA" alt="ARK Survival Ascended Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Genesis Part 1
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_ASA_GEN2_IP:7410">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASA" alt="ARK Survival Ascended Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Genesis Part 2
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_ASA_FJORDUR_IP:7410">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASA" alt="ARK Survival Ascended Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Fjordur
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_ASA_VALGUERO_IP:7410">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASA" alt="ARK Survival Ascended Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Valguero
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_ASA_CRYSTALISLES_IP:7410">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASA" alt="ARK Survival Ascended Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Crystal Isles
+                        </button>
+                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_ASA_LOSTISLAND_IP:7410">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=ASA" alt="ARK Survival Ascended Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Lost Island
+                        </button>
+                    </div>
+                    <p class="text-gray-300 mt-6 text-sm">
+                        <strong>Important:</strong> You must replace `YOUR_ASA_MAP_IP:7410` with your actual server IP address and game port for each map. The default ARK Ascended game port is usually `7410`.
                     </p>
-                    <img src="https://i.imgur.com/IQiWsxf.png" alt="ARK Ascended Server List Example" class="rounded-lg shadow-md mt-4 w-full md:max-w-sm">
                 </div>
 
                 <!-- Tab Content: Palworld Server -->
                 <div id="PalworldServer" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
-                    <h3 class="font-semibold text-white mb-3">Palworld</h3>
-                    <p class="text-gray-300 mb-4">
-                        1. Launch Palworld and click "Join Multiplayer Game".<br>
-                        2. Then, in the field beneath the server list, enter the server address.
-                    </p>
+                    <h3 class="font-semibold text-white mb-3">Join the Palworld Server:</h3>
+                    <p class="text-gray-300 mb-4">Click the button below to attempt to join the server via Steam. Ensure Steam and Palworld are running.</p>
                     <div class="flex flex-col items-center space-y-4">
-                        <input type="text" value="palworld.techyservers.com:8211" id="palworldInput" readonly class="bg-gray-700 border border-gray-600 rounded-lg py-2 px-4 text-gray-200 w-full max-w-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <button id="copyPalworldButton" class="nav-button">Click to Copy</button>
+                        <button class="join-server-button" data-steam-link="steam://connect/palworld.techyservers.com:8211">
+                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=PAL" alt="Palworld Logo" class="w-6 h-6 mr-2 rounded-sm">
+                            Join Palworld Server
+                        </button>
                     </div>
-                    <p class="text-gray-300 mt-4">3. Lastly, select the "Connect" button.</p>
+                    <p class="text-gray-300 mt-4">
+                        This button attempts to directly connect you to the Palworld server via Steam. If it doesn't work, you can manually enter the address in-game: <code class="bg-gray-800 rounded px-2 py-1 text-sm">palworld.techyservers.com:8211</code>
+                    </p>
                 </div>
             </article>
 
@@ -2196,11 +2375,6 @@
 
         // Event listener for all interactive elements once the DOM is fully loaded
         document.addEventListener('DOMContentLoaded', () => {
-            // Palworld copy button functionality
-            document.getElementById('copyPalworldButton').addEventListener('click', () => {
-                copyTextToClipboard('palworldInput', 'copyPalworldButton');
-            });
-
             // Add event listeners for all dino search inputs
             document.querySelectorAll('input[type="text"][id$="DinoSearchInput"]').forEach(input => {
                 input.addEventListener('input', (event) => {
@@ -2211,12 +2385,22 @@
                 });
             });
 
-            // Removed automatic click for initial tabs.
-            // Tabs will now be blank until a button is clicked.
-
             // Add click event listeners to all command cells
             document.querySelectorAll('.command-cell').forEach(cell => {
                 cell.addEventListener('click', copyCommand);
+            });
+
+            // Add click event listeners to all join server buttons
+            document.querySelectorAll('.join-server-button').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const steamLink = event.currentTarget.getAttribute('data-steam-link');
+                    if (steamLink) {
+                        window.location.href = steamLink;
+                        showMessageBox(`Attempting to connect to server...`, 'success');
+                    } else {
+                        showMessageBox('Server link not found for this map.', 'error');
+                    }
+                });
             });
         });
     </script>
