@@ -553,7 +553,7 @@
                         <li>Dino decay time: <span class="font-bold">30 days</span></li>
                         <li><span class="font-bold">24/7</span> Server uptime</li>
                     </ul>
-                    <h4 class="font-bold text-white mt-6 mb-3">Mods</h4>
+                    <h4 class="font-bold text-white mt-6 mb-3">Mods:</h4>
                     <ul class="list-disc list-inside space-y-2 text-blue-400">
                         <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/automated-ark" target="_blank" class="hover:underline">Automated ARK</a></li>
                         <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/awesomespyglass" target="_blank" class="hover:underline">Awesome Spyglass</a></li>
@@ -601,9 +601,9 @@
 
                 <!-- Tab Buttons for Shop Commands -->
                 <div class="tab flex flex-wrap justify-center sm:justify-start border-b border-gray-700">
-                    <button class="command-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openCommandTab(event, 'ArkEvolvedCommands')">ARK SURVIVAL EVOLVED (ASE)</button>
-                    <button class="command-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openCommandTab(event, 'ArkPrimalFearCommands')">ARK PRIMAL FEAR EVOLVED (ASE)</button>
-                    <button class="command-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openCommandTab(event, 'ArkAscendedCommands')">ARK SURVIVAL ASCENDED</button>
+                    <button class="command-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openCommandTab(event, 'ArkEvolvedCommands')">ARK Survival Evolved (ASE)</button>
+                    <button class="command-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openCommandTab(event, 'ArkPrimalFearCommands')">ARK Primal Fear Evolved (ASE)</button>
+                    <button class="command-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openCommandTab(event, 'ArkAscendedCommands')">ARK Survival Ascended (ASA)</button>
                 </div>
 
                 <!-- Tab Content: ARK Survival Evolved Commands -->
@@ -1851,9 +1851,6 @@
             <p class="text-gray-300 mb-4">
                 These Terms shall be governed and construed in accordance with the laws of [Your Jurisdiction, e.g., the State of Florida, USA], without regard to its conflict of law provisions.
             </p>
-            <p class="text-gray-300 text-sm mt-8">
-                <em>This is a generic Terms of Service placeholder. You should consult with legal counsel to draft a comprehensive and legally binding Terms of Service specific to your services and jurisdiction.</em>
-            </p>
         </div>
     </div>
 
@@ -2000,8 +1997,8 @@
             const searchInput = document.getElementById(tabName).querySelector('input[type="text"][id$="DinoSearchInput"]');
             if (searchInput) {
                 const tableId = searchInput.id.replace('SearchInput', 'Table');
-                const tableElement = document.getElementById(tableId);
-                filterTable(searchInput, tableElement); // Re-filter on tab change
+                const currentTable = document.getElementById(tableId);
+                filterTable(searchInput, currentTable); // Re-filter on tab change
             }
         }
 
@@ -2199,23 +2196,8 @@
                 });
             });
 
-            // Initialize the first tab (ARK Evolved) in the "Server Rates" section to be open by default
-            const initialRatesTabButton = document.querySelector('#Rates .tablinks');
-            if (initialRatesTabButton) {
-                initialRatesTabButton.click();
-            }
-
-            // Initialize the first tab (ARK Survival Evolved Commands) in the "Commands" section to be open by default
-            const initialCommandsTabButton = document.querySelector('#commands .command-tablinks');
-            if (initialCommandsTabButton) {
-                initialCommandsTabButton.click();
-            }
-
-            // Initialize the first tab (ARK Survival Evolved) in the "Server List" section to be open by default
-            const initialServerListTabButton = document.querySelector('#ServerList .server-list-tablinks');
-            if (initialServerListTabButton) {
-                initialServerListTabButton.click();
-            }
+            // Removed automatic click for initial tabs.
+            // Tabs will now be blank until a button is clicked.
 
             // Add click event listeners to all command cells
             document.querySelectorAll('.command-cell').forEach(cell => {
