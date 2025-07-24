@@ -457,6 +457,16 @@
         .command-cell:hover {
             background-color: rgba(59, 130, 246, 0.2); /* Light blue highlight on hover */
         }
+
+        /* New CSS for fading content */
+        #wrapper {
+            transition: opacity 1s ease-in-out, visibility 1s ease-in-out; /* Add transition to wrapper */
+        }
+
+        .content-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
     </style>
 </head>
 <body class="is-preload bg-gray-900 text-gray-200" oncontextmenu="return false;">
@@ -469,7 +479,7 @@
             preload="auto"
             muted
             playsinline
-            loop
+            <!-- Removed loop attribute -->
         ></video>
     </div>
 
@@ -1761,7 +1771,7 @@
                         3. Confirm you have the "Show Player Servers" box checked as shown below.<br>
                         4. Search for "techy" and press the "Enter" key twice.
                     </p>
-                    <img src="https://i.imgur.com/IQiWsxf.png" alt="ARK Ascended Server List Example" class="mx-auto rounded-lg shadow-md mt-4 w-full md:max-w-md">
+                    <img src="https://i.imgur.com/IQiWsxf.png" alt="ARK Ascended Server List Example" class="rounded-lg shadow-md mt-4 w-full md:max-w-sm">
                 </div>
 
                 <!-- Tab Content: Palworld Server -->
@@ -1902,21 +1912,25 @@
         // Get references to the video and button elements
         const backgroundVideo = document.getElementById('background-video-player');
         const playPauseBtn = document.getElementById('playPauseBtn');
+        const wrapper = document.getElementById('wrapper'); // Get the wrapper element
 
         /**
          * Event listener for the play/pause button.
          * Toggles video playback and muting, and updates button text.
+         * Also fades out/in the website content.
          */
         playPauseBtn.addEventListener('click', () => {
             if (backgroundVideo.paused) {
                 backgroundVideo.play();
                 backgroundVideo.muted = false; // Unmute when playing
+                wrapper.classList.add('content-hidden'); // Fade out content
                 playPauseBtn.innerHTML = `
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"/></svg>
                     Pause
                 `;
             } else {
                 backgroundVideo.pause();
+                wrapper.classList.remove('content-hidden'); // Fade in content
                 playPauseBtn.innerHTML = `
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M73.2 24.3l313.6 220.8c13 9.1 13 28.1 0 37.2L73.2 487.7c-13 9.1-32.1-.1-32.1-18.6V42.9c0-18.5 19.1-27.7 32.1-18.6z"/></svg>
                     Play Intro
@@ -1924,7 +1938,7 @@
             }
         });
 
-        // Event listener to reset the button text when the video ends
+        // Event listener to reset the button text and fade in content when the video ends
         backgroundVideo.addEventListener('ended', () => {
             playPauseBtn.innerHTML = `
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M73.2 24.3l313.6 220.8c13 9.1 13 28.1 0 37.2L73.2 487.7c-13 9.1-32.1-.1-32.1-18.6V42.9c0-18.5 19.1-27.7 32.1-18.6z"/></svg>
@@ -1932,6 +1946,7 @@
             `;
             backgroundVideo.currentTime = 0; // Reset video to start
             backgroundVideo.muted = true; // Re-mute the video
+            wrapper.classList.remove('content-hidden'); // Fade in content
         });
 
         /**
