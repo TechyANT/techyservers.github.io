@@ -501,6 +501,26 @@
             border-radius: 0.25rem; /* Slightly rounded corners for the images */
             object-fit: contain; /* Ensure the entire logo is visible */
         }
+
+        /* Responsive video container for HTML5 video */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio (height / width = 9 / 16 = 0.5625) */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.5rem; /* Match other rounded elements */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Match other shadow */
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures video covers the entire container */
+        }
     </style>
 </head>
 <body class="is-preload bg-gray-900 text-gray-200" oncontextmenu="return false;">
@@ -1781,9 +1801,9 @@
 
                 <!-- Tab Buttons for Server List -->
                 <div class="tab flex flex-wrap justify-center sm:justify-start border-b border-gray-700">
-                    <button class="server-list-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openServerListTab(event, 'ArkEvolvedServer')">ARK Survival Evolved (ASE)</button>
-                    <button class="server-list-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openServerListTab(event, 'ArkPrimalFearServer')">ARK Primal Fear (ASE)</button>
-                    <button class="server-list-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openServerListTab(event, 'ArkAscendedServer')">ARK Survival Ascended (ASA)</button>
+                    <button class="server-list-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openServerListTab(event, 'ArkEvolvedServer')">ARK Survival Evolved</button>
+                    <button class="server-list-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openServerListTab(event, 'ArkPrimalFearServer')">ARK Primal Fear</button>
+                    <button class="server-list-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openServerListTab(event, 'ArkAscendedServer')">ARK Ascended</button>
                     <button class="server-list-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openServerListTab(event, 'PalworldServer')">Palworld</button>
                 </div>
 
@@ -1843,6 +1863,16 @@
                             Crystal Isles
                         </button>
                     </div>
+                    <h4 class="font-semibold text-white mt-6 mb-3">How to join the server:</h4>
+                    <div class="video-container mt-3">
+                        <video class="w-full h-full rounded-lg shadow-lg" controls>
+                            <source src="your_ark_evolved_tutorial_video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-2">
+                        <strong class="text-red-400">Important:</strong> Please replace <code class="bg-gray-800 rounded px-1">your_ark_evolved_tutorial_video.mp4</code> in the <code class="bg-gray-800 rounded px-1">src</code> attribute above with your actual video URL for the ARK Survival Evolved tutorial.
+                    </p>
                 </div>
 
                 <!-- New Tab Content: ARK Primal Fear Server -->
@@ -1900,6 +1930,16 @@
                             Crystal Isles
                         </button>
                     </div>
+                    <h4 class="font-semibold text-white mt-6 mb-3">How to join the server:</h4>
+                    <div class="video-container mt-3">
+                        <video class="w-full h-full rounded-lg shadow-lg" controls>
+                            <source src="your_ark_primal_fear_tutorial_video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-2">
+                        <strong class="text-red-400">Important:</strong> Please replace <code class="bg-gray-800 rounded px-1">your_ark_primal_fear_tutorial_video.mp4</code> in the <code class="bg-gray-800 rounded px-1">src</code> attribute above with your actual video URL for the ARK Primal Fear tutorial.
+                    </p>
                 </div>
 
                 <!-- Tab Content: ARK Ascended Servers -->
@@ -1916,11 +1956,11 @@
                             <img src="https://techyservers.com/images/ASA.png" alt="ARK Survival Ascended Logo" class="w-6 h-6 mr-2 rounded-sm">
                             Scorched Earth
                         </button>
-                            <button class="join-server-button" data-steam-link="steam://run/2399830//+connect 97.106.166.219:11127">
+                        <button class="join-server-button" data-steam-link="steam://run/2399830//+connect 97.106.166.219:11127">
                             <img src="https://techyservers.com/images/ASA.png" alt="ARK Survival Ascended Logo" class="w-6 h-6 mr-2 rounded-sm">
                             Ragnarok
                         </button>
-                                <button class="join-server-button" data-steam-link="steam://run/2399830//+connect 97.106.166.219:11190">
+                        <button class="join-server-button" data-steam-link="steam://run/2399830//+connect 97.106.166.219:11190">
                             <img src="https://techyservers.com/images/ASA.png" alt="ARK Survival Ascended Logo" class="w-6 h-6 mr-2 rounded-sm">
                             Club Ark
                         </button>
@@ -1961,6 +2001,16 @@
                             Lost Island
                         </button>
                     </div>
+                    <h4 class="font-semibold text-white mt-6 mb-3">How to join the server:</h4>
+                    <div class="video-container mt-3">
+                        <video class="w-full h-full rounded-lg shadow-lg" controls>
+                            <source src="your_ark_ascended_tutorial_video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-2">
+                        <strong class="text-red-400">Important:</strong> Please replace <code class="bg-gray-800 rounded px-1">your_ark_ascended_tutorial_video.mp4</code> in the <code class="bg-gray-800 rounded px-1">src</code> attribute above with your actual video URL for the ARK Ascended tutorial.
+                    </p>
                 </div>
 
                 <!-- Tab Content: Palworld Server -->
@@ -1973,27 +2023,20 @@
                             Join Palworld Server
                         </button>
                     </div>
-<p class="text-gray-300 mt-4">
-    This button attempts to directly connect you to the Palworld server via Steam. If it doesn't work, you can manually enter the address in-game: 
-    <code class="bg-gray-800 rounded px-2 py-1 text-sm cursor-pointer" id="serverAddress">palworld.techyservers.com:8211</code>
-</p>
-
-<script>
-    document.getElementById('serverAddress').addEventListener('click', function() {
-        const textToCopy = this.innerText;
-        
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            // Optional: Provide visual feedback to the user
-            const originalText = this.innerText;
-            this.innerText = 'Copied!';
-            setTimeout(() => {
-                this.innerText = originalText;
-            }, 1500); // Revert text after 1.5 seconds
-        }).catch(err => {
-            console.error('Failed to copy text: ', err);
-        });
-    });
-</script>
+                    <p class="text-gray-300 mt-4">
+                        This button attempts to directly connect you to the Palworld server via Steam. If it doesn't work, you can manually enter the address in-game:
+                        <code class="bg-gray-800 rounded px-2 py-1 text-sm cursor-pointer" id="palworldServerAddress">97.106.166.219:8211</code>
+                    </p>
+                    <h4 class="font-semibold text-white mt-6 mb-3">How to join the server:</h4>
+                    <div class="video-container mt-3">
+                        <video class="w-full h-full rounded-lg shadow-lg" controls>
+                            <source src="your_palworld_tutorial_video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-2">
+                        <strong class="text-red-400">Important:</strong> Please replace <code class="bg-gray-800 rounded px-1">your_palworld_tutorial_video.mp4</code> in the <code class="bg-gray-800 rounded px-1">src</code> attribute above with your actual video URL for the Palworld tutorial.
+                    </p>
                 </div>
             </article>
 
@@ -2159,29 +2202,36 @@
 
         /**
          * Handles the tab switching functionality for the "Server Rates" section.
-         * Hides all tab content and deactivates all tab buttons,
-         * then shows the selected tab content and activates its button.
+         * Now includes toggle behavior: if the clicked tab is already open, it closes it.
          * @param {Event} evt - The click event.
-         * @param {string} tabName - The ID of the tab content to display.
+         * @param {string} tabName - The ID of the tab content to display/toggle.
          */
         function openGameTab(evt, tabName) {
-            // Get all elements with class="tabcontent" within the rates section and hide them
+            const currentTabContent = document.getElementById(tabName);
+            const tablinks = document.getElementById('Rates').getElementsByClassName("tablinks");
+
+            // Check if the clicked tab content is already visible
+            if (currentTabContent.style.display === "block") {
+                // If it's already open, close it
+                currentTabContent.style.display = "none";
+                evt.currentTarget.classList.remove("bg-blue-600", "text-white");
+                evt.currentTarget.classList.add("bg-gray-700", "text-gray-200");
+                return; // Exit function
+            }
+
+            // Otherwise, proceed to open the selected tab (and close others)
             const tabcontent = document.getElementById('Rates').getElementsByClassName("tabcontent");
             for (let i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].style.display = "none";
             }
 
-            // Get all elements with class="tablinks" within the rates section and remove the "active" class
-            const tablinks = document.getElementById('Rates').getElementsByClassName("tablinks");
             for (let i = 0; i < tablinks.length; i++) {
-                // Remove the active styling (bg-blue-600, text-white)
                 tablinks[i].classList.remove("bg-blue-600", "text-white");
-                // Add back the default styling of nav-button
                 tablinks[i].classList.add("bg-gray-700", "text-gray-200");
             }
 
             // Show the specific tab content
-            document.getElementById(tabName).style.display = "block";
+            currentTabContent.style.display = "block";
 
             // Add the "active" styling to the clicked button
             evt.currentTarget.classList.add("bg-blue-600", "text-white");
@@ -2190,34 +2240,43 @@
 
         /**
          * Handles the tab switching functionality for the "Commands" section.
-         * Hides all tab content and deactivates all tab buttons,
-         * then shows the selected tab content and activates its button.
+         * Now includes toggle behavior: if the clicked tab is already open, it closes it.
          * @param {Event} evt - The click event.
-         * @param {string} tabName - The ID of the tab content to display.
+         * @param {string} tabName - The ID of the tab content to display/toggle.
          */
         function openCommandTab(evt, tabName) {
-            // Get all elements with class="tabcontent" within the commands section and hide them
+            const currentTabContent = document.getElementById(tabName);
+            const tablinks = document.getElementById('commands').getElementsByClassName("command-tablinks");
+
+            // Check if the clicked tab content is already visible
+            if (currentTabContent.style.display === "block") {
+                // If it's already open, close it
+                currentTabContent.style.display = "none";
+                evt.currentTarget.classList.remove("bg-blue-600", "text-white");
+                evt.currentTarget.classList.add("bg-gray-700", "text-gray-200");
+                return; // Exit function
+            }
+
+            // Otherwise, proceed to open the selected tab (and close others)
             const tabcontent = document.getElementById('commands').getElementsByClassName("tabcontent");
             for (let i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].style.display = "none";
             }
 
-            // Get all elements with class="command-tablinks" within the commands section and remove the "active" class
-            const tablinks = document.getElementById('commands').getElementsByClassName("command-tablinks");
             for (let i = 0; i < tablinks.length; i++) {
                 tablinks[i].classList.remove("bg-blue-600", "text-white");
                 tablinks[i].classList.add("bg-gray-700", "text-gray-200");
             }
 
             // Show the specific tab content
-            document.getElementById(tabName).style.display = "block";
+            currentTabContent.style.display = "block";
 
             // Add the "active" styling to the clicked button
             evt.currentTarget.classList.add("bg-blue-600", "text-white");
             evt.currentTarget.classList.remove("bg-gray-700", "text-gray-200");
 
-            // If the opened tab has a search input, trigger its filter
-            const searchInput = document.getElementById(tabName).querySelector('input[type="text"][id$="DinoSearchInput"]');
+            // If the opened tab has a search input, trigger its filter (if applicable)
+            const searchInput = currentTabContent.querySelector('input[type="text"][id$="DinoSearchInput"]');
             if (searchInput) {
                 const tableId = searchInput.id.replace('SearchInput', 'Table');
                 const currentTable = document.getElementById(tableId);
@@ -2227,27 +2286,36 @@
 
         /**
          * Handles the tab switching functionality for the "Server List" section.
-         * Hides all tab content and deactivates all tab buttons,
-         * then shows the selected tab content and activates its button.
+         * Now includes toggle behavior: if the clicked tab is already open, it closes it.
          * @param {Event} evt - The click event.
-         * @param {string} tabName - The ID of the tab content to display.
+         * @param {string} tabName - The ID of the tab content to display/toggle.
          */
         function openServerListTab(evt, tabName) {
-            // Get all elements with class="tabcontent" within the server list section and hide them
+            const currentTabContent = document.getElementById(tabName);
+            const tablinks = document.getElementById('ServerList').getElementsByClassName("server-list-tablinks");
+
+            // Check if the clicked tab content is already visible
+            if (currentTabContent.style.display === "block") {
+                // If it's already open, close it
+                currentTabContent.style.display = "none";
+                evt.currentTarget.classList.remove("bg-blue-600", "text-white");
+                evt.currentTarget.classList.add("bg-gray-700", "text-gray-200");
+                return; // Exit function
+            }
+
+            // Otherwise, proceed to open the selected tab (and close others)
             const tabcontent = document.getElementById('ServerList').getElementsByClassName("tabcontent");
             for (let i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].style.display = "none";
             }
 
-            // Get all elements with class="server-list-tablinks" within the server list section and remove the "active" class
-            const tablinks = document.getElementById('ServerList').getElementsByClassName("server-list-tablinks");
             for (let i = 0; i < tablinks.length; i++) {
                 tablinks[i].classList.remove("bg-blue-600", "text-white");
                 tablinks[i].classList.add("bg-gray-700", "text-gray-200");
             }
 
             // Show the specific tab content
-            document.getElementById(tabName).style.display = "block";
+            currentTabContent.style.display = "block";
 
             // Add the "active" styling to the clicked button
             evt.currentTarget.classList.add("bg-blue-600", "text-white");
@@ -2431,6 +2499,34 @@
                     }
                 });
             });
+
+            // Add event listener for Palworld server address copy
+            const palworldAddressElement = document.getElementById('palworldServerAddress');
+            if (palworldAddressElement) {
+                palworldAddressElement.addEventListener('click', function() {
+                    const textToCopy = this.innerText;
+
+                    // Use document.execCommand('copy') for better iframe compatibility
+                    const tempTextArea = document.createElement('textarea');
+                    tempTextArea.value = textToCopy;
+                    document.body.appendChild(tempTextArea);
+                    tempTextArea.select();
+                    try {
+                        document.execCommand('copy');
+                        showMessageBox('Copied: ' + textToCopy, 'success');
+                        const originalText = this.innerText;
+                        this.innerText = 'Copied!';
+                        setTimeout(() => {
+                            this.innerText = originalText;
+                        }, 1500);
+                    } catch (err) {
+                        console.error('Failed to copy text: ', err);
+                        showMessageBox('Failed to copy text. Please copy manually.', 'error');
+                    } finally {
+                        document.body.removeChild(tempTextArea);
+                    }
+                });
+            }
         });
     </script>
 </body>
