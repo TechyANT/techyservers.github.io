@@ -577,7 +577,6 @@
                 <div class="tab flex flex-wrap justify-center sm:justify-start border-b border-gray-700">
                     <button class="tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'Evolved')">ARK Evolved</button>
                     <button class="tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'Ascended')">ARK Ascended</button>
-                    <button class="tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'PrimalFear')">ARK Primal Fear</button>
                     <button class="tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'Palworld')">Palworld</button>
                     <button class="tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openGameTab(event, 'ConanExiles')">Conan Exiles</button>
                 </div>
@@ -602,6 +601,8 @@
                         <li><a href="https://gameservershub.com/forums/resources/enhanced-hlna.268/" target="_blank" class="hover:underline">Enhanced HLNA</a></li>
                         <li><a href="https://gameservershub.com/forums/resources/item-collector-free.565/" target="_blank" class="hover:underline">Item Collector (Free)</a></li>
                         <li><a href="https://gameservershub.com/forums/resources/structure-utilities-pro.630/" target="_blank" class="hover:underline">Structure Utilities Pro</a></li>
+                        <!-- NEW PLUGIN: Vaultorama - Virtual Vaults -->
+                        <li><a href="https://ark-server-api.com/resources/vaultorama-virtual-vaults.167/" target="_blank" class="hover:underline">Vaultorama - Virtual Vaults</a></li>
                     </ul>
                 </div>
 
@@ -629,12 +630,6 @@
                         <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/super-cryo-storage" target="_blank" class="hover:underline">Super Cryo Storage (Dinos raise and imprint in fridges while offline; resources also produce)</a></li>
                         <li><a href="https://www.curseforge.com/ark-survival-ascended/mods/custom-dino-levels" target="_blank" class="hover:underline">Custom Dino Levels (Improved dino levels; max level 200)</a></li>
                     </ul>
-                </div>
-
-                <!-- Tab Content: ARK Primal Fear -->
-                <div id="PrimalFear" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
-                    <h3 class="font-semibold text-white mb-4">ARK Primal Rates</h3>
-                    <p class="text-gray-300">Coming soon!</p>
                 </div>
 
                 <!-- Tab Content: Palworld -->
@@ -666,7 +661,6 @@
                 <!-- Tab Buttons for Shop Commands -->
                 <div class="tab flex flex-wrap justify-center sm:justify-start border-b border-gray-700">
                     <button class="command-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openCommandTab(event, 'ArkEvolvedCommands')">ARK Survival Evolved (ASE)</button>
-                    <button class="command-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openCommandTab(event, 'ArkPrimalFearCommands')">ARK Primal Fear Evolved (ASE)</button>
                     <button class="command-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openCommandTab(event, 'ArkAscendedCommands')">ARK Survival Ascended (ASA)</button>
                 </div>
 
@@ -1780,12 +1774,29 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
 
-                <!-- Tab Content: ARK Primal Fear Evolved Commands -->
-                <div id="ArkPrimalFearCommands" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
-                    <h3 class="font-semibold text-white mb-4">ARK Primal Fear Evolved Commands</h3>
-                    <p class="text-gray-300">Coming soon!</p>
+                    <!-- UPDATED SECTION: Virtual Vaults Commands (Removed brackets from commands) -->
+                    <p class="text-center text-lg text-white mt-8 mb-4"><strong>Virtual Vaults:</strong> Commands for storing and retrieving items to your virtual vault (Vaultorama).</p>
+                    <div class="overflow-x-auto rounded-lg shadow-lg">
+                        <table class="min-w-full">
+                            <thead>
+                                <tr>
+                                    <th class="py-3 px-4 uppercase font-semibold text-sm text-gray-100 bg-gray-600 rounded-tl-lg">Command</th>
+                                    <th class="py-3 px-4 uppercase font-semibold text-sm text-gray-100 bg-gray-600 rounded-tr-lg">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-gray-700 divide-y divide-gray-600">
+                                <tr>
+                                    <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/upload vaultname" title="Click to Copy">/upload vaultname</td>
+                                    <td class="py-3 px-4">Uploads the contents of the container you are looking at to the specified virtual vault. Replace vaultname with your desired name.</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 px-4 text-blue-300 font-mono command-cell" data-command="/download vaultname" title="Click to Copy">/download vaultname</td>
+                                    <td class="py-3 px-4">Downloads the contents of the specified virtual vault into the container you are looking at. Replace vaultname with your desired name.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <!-- Tab Content: ARK Survival Ascended Commands -->
@@ -1802,7 +1813,6 @@
                 <!-- Tab Buttons for Server List -->
                 <div class="tab flex flex-wrap justify-center sm:justify-start border-b border-gray-700">
                     <button class="server-list-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openServerListTab(event, 'ArkEvolvedServer')">ARK Survival Evolved</button>
-                    <button class="server-list-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openServerListTab(event, 'ArkPrimalFearServer')">ARK Primal Fear</button>
                     <button class="server-list-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openServerListTab(event, 'ArkAscendedServer')">ARK Ascended</button>
                     <button class="server-list-tablinks nav-button flex-grow sm:flex-grow-0 min-w-[120px] text-center" onclick="openServerListTab(event, 'PalworldServer')">Palworld</button>
                 </div>
@@ -1863,80 +1873,6 @@
                             Crystal Isles
                         </button>
                     </div>
-                    <h4 class="font-semibold text-white mt-6 mb-3">How to join the server:</h4>
-                    <div class="video-container mt-3">
-                        <video class="w-full h-full rounded-lg shadow-lg" controls>
-                            <source src="http://techyservers.com/ASE-Join.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
-
-                <!-- New Tab Content: ARK Primal Fear Server -->
-                <div id="ArkPrimalFearServer" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
-                    <h3 class="font-semibold text-white mb-3">Join an ARK Primal Fear Server:</h3>
-                    <p class="text-gray-300 mb-4">Click a map below to attempt to join the server via Steam. Ensure Steam and ARK are running, and that you have the Primal Fear mod installed.</p>
-
-                    <div class="flex flex-wrap justify-center gap-4 mt-6">
-                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_ISLAND_IP:7777">
-                            <img src="http://techyservers.com/images/ark-png-43971.png" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
-                            The Island
-                        </button>
-                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_RAGNAROK_IP:7777">
-                            <img src="http://techyservers.com/images/ark-png-43971.png" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
-                            Ragnarok
-                        </button>
-                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_RAGNAROK_IP:7777">
-                            <img src="http://techyservers.com/images/ark-png-43971.png" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
-                            The Center
-                        </button>
-                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_SCORCHED_IP:7777">
-                            <img src="http://techyservers.com/images/ark-png-43971.png" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
-                            Scorched Earth
-                        </button>
-                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_FJORDUR_IP:7777">
-                            <img src="http://techyservers.com/images/ark-png-43971.png" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
-                            Fjordur
-                        </button>
-                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_GEN1_IP:7777">
-                            <img src="http://techyservers.com/images/ark-png-43971.png" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
-                            Genesis Part 1
-                        </button>
-                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_GEN2_IP:7777">
-                            <img src="http://techyservers.com/images/ark-png-43971.png" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
-                            Genesis Part 2
-                        </button>
-                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_EXTINCTION_IP:7777">
-                            <img src="http://techyservers.com/images/ark-png-43971.png" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
-                            Extinction
-                        </button>
-                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_ABERRATION_IP:7777">
-                            <img src="http://techyservers.com/images/ark-png-43971.png" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
-                            Aberration
-                        </button>
-                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_LOSTISLAND_IP:7777">
-                            <img src="http://techyservers.com/images/ark-png-43971.png" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
-                            Lost Island
-                        </button>
-                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_VALGUERO_IP:7777">
-                            <img src="https://placehold.co/24x24/1e3a8a/ffffff?text=PF" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
-                            Valguero
-                        </button>
-                        <button class="join-server-button" data-steam-link="steam://connect/YOUR_PRIMAL_FEAR_CRYSTALISLES_IP:7777">
-                            <img src="http://techyservers.com/images/ark-png-43971.png" alt="ARK Primal Fear Logo" class="w-6 h-6 mr-2 rounded-sm">
-                            Crystal Isles
-                        </button>
-                    </div>
-                    <h4 class="font-semibold text-white mt-6 mb-3">How to join the server:</h4>
-                    <div class="video-container mt-3">
-                        <video class="w-full h-full rounded-lg shadow-lg" controls>
-                            <source src="" type="video/mkv">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <p class="text-gray-400 text-sm mt-2">
-                        <strong class="text-red-400">Important:</strong> Please replace <code class="bg-gray-800 rounded px-1">your_ark_primal_fear_tutorial_video.mp4</code> in the <code class="bg-gray-800 rounded px-1">src</code> attribute above with your actual video URL for the ARK Primal Fear tutorial.
-                    </p>
                 </div>
 
                 <!-- Tab Content: ARK Ascended Servers -->
