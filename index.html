@@ -465,10 +465,10 @@
                 <div id="ArkEvolvedServer" class="tabcontent bg-gray-700 p-6 rounded-b-lg shadow-md border border-gray-600">
                     <h3 class="font-semibold text-white mb-3">Join an ARK Survival Evolved Server</h3>
                     <div class="how-to">
-                        <strong class="text-white">One-click join (Steam / PC):</strong> make sure Steam is running, then click <em>Join via Steam</em> on a map. Steam will launch ARK and connect you.
+                        <strong class="text-white">One-click join (Steam / PC):</strong> make sure Steam is running, then click <em>Join via Steam</em> on a map. Steam will launch ARK and connect you to that map.
                         <ol>
-                            <li>If it doesn't connect, click the address to copy it.</li>
-                            <li>In Steam: <em>View &rarr; Game Servers &rarr; Favorites &rarr; +</em>, paste the address, then <em>Connect</em>.</li>
+                            <li>If it doesn't connect, click the address on the map card to copy it.</li>
+                            <li>In ARK, press <code>Tab</code> to open the console, type <code>open</code> followed by a space, paste the address, and press Enter.</li>
                         </ol>
                     </div>
                     <div class="server-grid" id="aseServerGrid"></div>
@@ -917,8 +917,7 @@
 
     /* ---------- Server cards ---------- */
     function aseJoinLink(s) {
-        // Steam's server-join URL uses the QUERY port. Fall back to the in-game +connect (GAME port).
-        if (s.queryPort) return `steam://connect/${SERVER_IP}:${s.queryPort}`;
+        // Launches ARK through Steam and connects straight to the GAME (server) port.
         return `steam://run/346110//+connect%20${SERVER_IP}:${s.gamePort}`;
     }
 
@@ -933,9 +932,8 @@
     function renderASE() {
         const grid = document.getElementById('aseServerGrid');
         grid.innerHTML = ASE_SERVERS.map(s => {
-            const live = !!(s.gamePort || s.queryPort);
-            const favPort = s.queryPort || s.gamePort;
-            const addr = `${SERVER_IP}:${favPort}`;
+            const live = !!s.gamePort;
+            const addr = `${SERVER_IP}:${s.gamePort}`;
             return `<div class="server-card">
                 ${cardHead(ICONS.ase, s.map, live)}
                 ${live ? `<div class="server-address" data-copy="${addr}" title="Click to copy">${addr}</div>` : ''}
